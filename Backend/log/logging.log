@@ -1,0 +1,350 @@
+2019-09-11 17:11:57,922 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:11:57,925 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'kkkk';
+2019-09-11 17:11:57,925 MyCONN.py[line:296] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc3b00145d8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fc3bc35ce80>
+2019-09-11 17:11:57,926 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc3b00145d8>
+2019-09-11 17:13:54,332 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:13:54,334 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'kkkk';
+2019-09-11 17:13:54,334 MyCONN.py[line:298] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc1c8012c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7fc1d6216fd0>
+2019-09-11 17:13:54,335 MyCONN.py[line:386] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc1c8012c88>
+2019-09-11 17:15:00,328 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:15:00,330 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'kkkk';
+2019-09-11 17:15:00,330 MyCONN.py[line:301] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc138012c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7fc14861ef98>
+2019-09-11 17:15:00,331 MyCONN.py[line:389] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fc138012c88>
+2019-09-11 17:15:00,632 MyCONN.py[line:211] ERROR [action]:update[status]:FAIL[MySQL Errorcode]:cursor closed[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2019-09-11 17:15:00,632 MyCONN.py[line:331] INFO [action]:commit[status]:OK[conn]:<_mysql.connection closed at 0x7fc138012c88>
+2019-09-11 17:15:00,632 MyCONN.py[line:344] ERROR [action]:commit[status]:FAIL[MySQL Errorcode]:2006,[conn]:<_mysql.connection closed at 0x7fc138012c88>
+2019-09-11 17:15:00,632 MyCONN.py[line:389] INFO [action]:close[status]:OK[conn]:<_mysql.connection closed at 0x7fc138012c88>
+2019-09-11 17:18:26,513 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:18:26,515 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'kkkk';
+2019-09-11 17:18:26,516 MyCONN.py[line:296] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fb240012c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7fb24faa0fd0>
+2019-09-11 17:18:26,516 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fb240012c88>
+2019-09-11 17:18:26,817 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:18:26,819 MyCONN.py[line:193] INFO [action]:update[status]:OK[sql]:INSERT INTO users(name,password_hash) values ('kkkk','$6$rounds=656000$9uU0NTn7qxTHX72i$Q7G8OvXvvBpotxU5XIbIJtkFFql27U3P8sI5KzpB1OohF2NfTqYnkYAG5h1.wTNVgASgE.RcHaiCN5oRwayZw1');[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2019-09-11 17:18:26,819 MyCONN.py[line:326] INFO [action]:commit[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fb24001b508>
+2019-09-11 17:18:26,819 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fb24001b508>
+2019-09-11 17:19:33,067 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:19:33,068 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'kkkk';
+2019-09-11 17:19:33,068 MyCONN.py[line:296] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7f36f8012c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7f3704862f98>
+2019-09-11 17:19:33,068 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7f36f8012c88>
+2019-09-11 17:24:55,150 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:24:55,152 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:SELECT name FROM users where name = 'ddddd';
+2019-09-11 17:24:55,152 MyCONN.py[line:296] INFO [action]:getRowCount[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7efc0c012c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7efc1a6c1f98>
+2019-09-11 17:24:55,153 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7efc0c012c88>
+2019-09-11 17:24:55,450 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-11 17:24:55,451 MyCONN.py[line:193] INFO [action]:update[status]:OK[sql]:INSERT INTO users(name,password_hash) values ('ddddd','$6$rounds=656000$Va5CXHcJCRkFGL.X$4BUjB0wF5lIPOe42LRR2/MXNkCn3Y3QfoLi.lLdM4hMfTjBnKyl11RjAmSRWCv0JPMhJ3ZNUiImnkcN5X3xDw0');[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2019-09-11 17:24:55,451 MyCONN.py[line:326] INFO [action]:commit[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7efc0c01b508>
+2019-09-11 17:24:55,451 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7efc0c01b508>
+2019-09-12 10:50:27,859 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-12 10:50:28,035 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-12 10:50:28,036 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7f71e8012158>[cur]:<MySQLdb.cursors.Cursor object at 0x7f71f5573518>
+2019-09-12 10:50:28,036 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7f71e8012158>
+2019-09-16 09:35:07,238 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 09:35:07,266 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 09:35:07,266 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff408096898>[cur]:<MySQLdb.cursors.Cursor object at 0x7ff415af5eb8>
+2019-09-16 09:35:07,266 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff408096898>
+2019-09-16 09:35:23,082 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 09:35:23,086 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 09:35:23,087 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff40809e078>[cur]:<MySQLdb.cursors.Cursor object at 0x7ff415b16ac8>
+2019-09-16 09:35:23,087 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff40809e078>
+2019-09-16 09:35:26,193 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 09:35:26,197 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 09:35:26,198 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff40809e9d8>[cur]:<MySQLdb.cursors.Cursor object at 0x7ff415b16a20>
+2019-09-16 09:35:26,198 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff40809e9d8>
+2019-09-16 09:39:06,711 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 09:39:06,718 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 09:39:06,718 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff4080a9e68>[cur]:<MySQLdb.cursors.Cursor object at 0x7ff415b234a8>
+2019-09-16 09:39:06,718 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7ff4080a9e68>
+2019-09-16 09:44:45,347 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 09:44:45,351 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 09:44:45,352 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fdb4408bc98>[cur]:<MySQLdb.cursors.Cursor object at 0x7fdb524b8d68>
+2019-09-16 09:44:45,352 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x7fdb4408bc98>
+2019-09-16 10:34:22,122 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:34:22,149 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:34:22,149 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2e34a18>[cur]:<MySQLdb.cursors.Cursor object at 0x7fda6e44ae10>
+2019-09-16 10:34:22,149 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2e34a18>
+2019-09-16 10:34:37,175 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:34:37,176 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:34:37,176 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2e34c68>[cur]:<MySQLdb.cursors.Cursor object at 0x7fda6e450c18>
+2019-09-16 10:34:37,176 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2e34c68>
+2019-09-16 10:51:56,772 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:51:56,772 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:52:12,546 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:52:12,546 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:52:40,211 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:52:40,211 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:53:26,400 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:53:26,404 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:53:26,405 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x17a9408>[cur]:<MySQLdb.cursors.Cursor object at 0x7f65acc849e8>
+2019-09-16 10:53:26,405 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x17a9408>
+2019-09-16 10:54:00,458 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:54:00,458 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:54:16,761 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:54:16,761 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:54:21,976 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:54:21,976 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 10:58:52,190 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:58:52,191 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:58:52,191 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e24d8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7b2bf47208>
+2019-09-16 10:58:52,191 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e24d8>
+2019-09-16 10:59:01,285 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:59:01,287 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:59:01,287 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e1ae8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7b2bf47128>
+2019-09-16 10:59:01,287 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e1ae8>
+2019-09-16 10:59:03,273 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 10:59:03,274 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 10:59:03,274 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e27f8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7b2bf47198>
+2019-09-16 10:59:03,274 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e27f8>
+2019-09-16 11:00:08,144 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 11:00:08,145 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 11:00:08,145 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e2308>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7b2bfaed30>
+2019-09-16 11:00:08,145 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x21e2308>
+2019-09-16 11:00:21,891 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 11:00:21,891 batchdetail_info.py[line:149] ERROR [action]:get batch detail info [status]:FAIL[host]:127.0.0.1[port]:4999[Errorcode]:local variable 'storage_bin' referenced before assignment
+2019-09-16 11:11:43,639 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2019-09-16 11:11:43,642 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2019-09-16 11:11:43,642 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x21f44d8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7b2bfaefd0>
+2019-09-16 11:11:43,642 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x21f44d8>
+2020-04-27 17:31:29,870 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-27 17:31:30,012 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2020-04-27 17:31:30,013 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2273758>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7a7d83cf98>
+2020-04-27 17:31:30,013 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2273758>
+2020-04-29 16:53:44,051 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-29 16:53:44,316 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = 'API-原料' and batch = '19000231';
+2020-04-29 16:53:44,317 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1a222f8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fa6b9714518>
+2020-04-29 16:53:44,317 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1a222f8>
+2020-04-29 17:20:37,399 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-29 17:20:37,436 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-29 17:20:37,436 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x19fab38>[cur]:<MySQLdb.cursors.Cursor object at 0x7fa6b971fc50>
+2020-04-29 17:20:37,437 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x19fab38>
+2020-04-29 17:36:19,118 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-29 17:36:19,142 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-29 17:36:19,143 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x174ccd8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fb8aa23b6d8>
+2020-04-29 17:36:19,143 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x174ccd8>
+2020-04-29 17:44:05,930 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-29 17:44:05,931 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-29 17:44:05,931 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x207a6c8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f0887f87dd8>
+2020-04-29 17:44:05,955 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x207a6c8>
+2020-04-30 08:39:07,598 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 08:39:07,672 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 08:39:07,672 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x208c878>[cur]:<MySQLdb.cursors.Cursor object at 0x7f0887e8aef0>
+2020-04-30 08:39:07,673 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x208c878>
+2020-04-30 08:39:17,106 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 08:39:17,107 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 08:39:17,107 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2087c88>[cur]:<MySQLdb.cursors.Cursor object at 0x7f0887ed9908>
+2020-04-30 08:39:17,107 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2087c88>
+2020-04-30 09:09:13,637 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:09:13,681 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:09:13,682 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x20cd438>[cur]:<MySQLdb.cursors.Cursor object at 0x7f0887d37fd0>
+2020-04-30 09:09:13,682 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x20cd438>
+2020-04-30 09:44:58,192 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:44:58,245 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:44:58,246 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2863ce8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b220cc0>
+2020-04-30 09:44:58,246 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2863ce8>
+2020-04-30 09:47:53,250 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:47:53,254 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:47:53,255 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x285fd78>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b274fd0>
+2020-04-30 09:47:53,255 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x285fd78>
+2020-04-30 09:48:12,222 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:48:12,261 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:48:12,261 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2860d18>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5c83da20>
+2020-04-30 09:48:12,261 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2860d18>
+2020-04-30 09:48:44,692 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:48:44,694 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:48:44,695 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2867bf8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b1cf7f0>
+2020-04-30 09:48:44,695 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2867bf8>
+2020-04-30 09:48:52,739 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:48:52,741 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:48:52,741 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2867e68>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba60deae10>
+2020-04-30 09:48:52,742 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2867e68>
+2020-04-30 09:48:56,124 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:48:56,126 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:48:56,127 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x285d3c8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b275c18>
+2020-04-30 09:48:56,127 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x285d3c8>
+2020-04-30 09:49:06,985 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:49:06,986 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:49:06,986 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x27fe248>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b2742b0>
+2020-04-30 09:49:06,986 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x27fe248>
+2020-04-30 09:49:19,746 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:49:19,747 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:49:19,747 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x285e368>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b28d2b0>
+2020-04-30 09:49:19,747 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x285e368>
+2020-04-30 09:49:35,839 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:49:35,840 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:49:35,841 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2860fa8>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b2ed198>
+2020-04-30 09:49:35,841 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2860fa8>
+2020-04-30 09:52:37,842 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 09:52:37,844 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 09:52:37,845 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2863088>[cur]:<MySQLdb.cursors.Cursor object at 0x7fba5b21ccc0>
+2020-04-30 09:52:37,845 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2863088>
+2020-04-30 10:13:28,738 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:13:28,759 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:13:28,760 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x20167b8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7913b13f98>
+2020-04-30 10:13:28,760 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x20167b8>
+2020-04-30 10:18:38,123 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:18:38,131 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:18:38,131 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2068ac8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7913a17cc0>
+2020-04-30 10:18:38,131 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2068ac8>
+2020-04-30 10:21:20,054 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:21:20,056 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:21:20,056 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2072ac8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f79138c1f98>
+2020-04-30 10:21:20,057 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2072ac8>
+2020-04-30 10:21:29,714 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:21:29,715 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:21:29,716 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x201be18>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7913b63e80>
+2020-04-30 10:21:29,716 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x201be18>
+2020-04-30 10:21:52,198 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:21:52,199 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:21:52,199 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2065068>[cur]:<MySQLdb.cursors.Cursor object at 0x7f79138c1748>
+2020-04-30 10:21:52,200 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2065068>
+2020-04-30 10:21:55,866 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:21:55,869 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:21:55,870 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x20691f8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f79138d0d68>
+2020-04-30 10:21:55,872 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x20691f8>
+2020-04-30 10:23:04,984 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:23:04,986 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:23:04,986 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x207def8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f79138c18d0>
+2020-04-30 10:23:04,986 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x207def8>
+2020-04-30 10:23:07,503 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:23:07,504 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:23:07,504 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x202f178>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7913a6fb70>
+2020-04-30 10:23:07,504 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x202f178>
+2020-04-30 10:23:19,461 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:23:19,463 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:23:19,463 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x208baa8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f79138c12e8>
+2020-04-30 10:23:19,463 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x208baa8>
+2020-04-30 10:44:23,926 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 10:44:23,934 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 10:44:23,935 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2077e48>[cur]:<MySQLdb.cursors.Cursor object at 0x7f7913864710>
+2020-04-30 10:44:23,936 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2077e48>
+2020-04-30 11:58:11,763 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 11:58:11,796 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 11:58:11,797 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3308>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16f8ac8>
+2020-04-30 11:58:11,797 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3308>
+2020-04-30 15:15:00,374 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 15:15:00,399 MyCONN.py[line:131] ERROR [action]:query[status]:FAIL[port]:4999[MySQL Errorcode]:1054,Unknown column 'None' in 'where clause'[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2020-04-30 15:15:00,400 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24aeb58>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16bb080>
+2020-04-30 15:15:00,400 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24aeb58>
+2020-04-30 15:15:04,163 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 15:15:04,164 MyCONN.py[line:131] ERROR [action]:query[status]:FAIL[port]:4999[MySQL Errorcode]:1054,Unknown column 'None' in 'where clause'[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2020-04-30 15:15:04,164 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x248f2c8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173ecc0>
+2020-04-30 15:15:04,164 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x248f2c8>
+2020-04-30 15:15:07,487 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 15:15:07,488 MyCONN.py[line:131] ERROR [action]:query[status]:FAIL[port]:4999[MySQL Errorcode]:1054,Unknown column 'None' in 'where clause'[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2020-04-30 15:15:07,488 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x248f008>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173c6d8>
+2020-04-30 15:15:07,488 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x248f008>
+2020-04-30 15:15:13,942 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 15:15:13,944 MyCONN.py[line:131] ERROR [action]:query[status]:FAIL[port]:4999[MySQL Errorcode]:1054,Unknown column 'None' in 'where clause'[host]:127.0.0.1[port]:4999[db]=tasly_warehouse
+2020-04-30 15:15:13,944 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x249c8b8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a17025f8>
+2020-04-30 15:15:13,944 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x249c8b8>
+2020-04-30 16:51:34,065 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,182 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '一号货架' order by a.storage_bin;
+2020-04-30 16:51:34,182 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2490528>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173fb70>
+2020-04-30 16:51:34,182 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2490528>
+2020-04-30 16:51:34,184 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,213 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '二号货架' order by a.storage_bin;
+2020-04-30 16:51:34,213 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24915a8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173fba8>
+2020-04-30 16:51:34,213 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24915a8>
+2020-04-30 16:51:34,214 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,243 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '三号货架' order by a.storage_bin;
+2020-04-30 16:51:34,243 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2499658>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173fb00>
+2020-04-30 16:51:34,244 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2499658>
+2020-04-30 16:51:34,245 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,273 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '四号货架' order by a.storage_bin;
+2020-04-30 16:51:34,273 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2491a18>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a179bfd0>
+2020-04-30 16:51:34,273 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2491a18>
+2020-04-30 16:51:34,275 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,305 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '五号货架' order by a.storage_bin;
+2020-04-30 16:51:34,305 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2493388>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173fb38>
+2020-04-30 16:51:34,305 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2493388>
+2020-04-30 16:51:34,307 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 16:51:34,337 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '六号货架' order by a.storage_bin;
+2020-04-30 16:51:34,338 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x2499658>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a173fb70>
+2020-04-30 16:51:34,338 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x2499658>
+2020-04-30 17:17:39,050 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:17:39,052 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 17:17:39,053 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a1a28>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a1751780>
+2020-04-30 17:17:39,053 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a1a28>
+2020-04-30 17:24:10,742 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:24:10,744 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 17:24:10,744 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24ba8a8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a179df98>
+2020-04-30 17:24:10,744 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24ba8a8>
+2020-04-30 17:31:20,268 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:20,270 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-04-30 17:31:20,271 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24b8f18>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a179bf60>
+2020-04-30 17:31:20,271 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24b8f18>
+2020-04-30 17:31:27,195 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,245 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '一号货架' order by a.storage_bin;
+2020-04-30 17:31:27,246 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x249b1e8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16ef668>
+2020-04-30 17:31:27,246 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x249b1e8>
+2020-04-30 17:31:27,248 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,297 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '二号货架' order by a.storage_bin;
+2020-04-30 17:31:27,298 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3448>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16efc50>
+2020-04-30 17:31:27,298 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3448>
+2020-04-30 17:31:27,301 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,352 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '三号货架' order by a.storage_bin;
+2020-04-30 17:31:27,352 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3fd8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16efc18>
+2020-04-30 17:31:27,352 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3fd8>
+2020-04-30 17:31:27,355 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,397 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '四号货架' order by a.storage_bin;
+2020-04-30 17:31:27,398 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x249b1e8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16ef2e8>
+2020-04-30 17:31:27,398 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x249b1e8>
+2020-04-30 17:31:27,400 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,434 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '五号货架' order by a.storage_bin;
+2020-04-30 17:31:27,435 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a4b68>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16ef7f0>
+2020-04-30 17:31:27,435 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a4b68>
+2020-04-30 17:31:27,437 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-04-30 17:31:27,475 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select distinct(a.storage_bin),b.status,a.rack_type from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '六号货架' order by a.storage_bin;
+2020-04-30 17:31:27,475 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3f08>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16efbe0>
+2020-04-30 17:31:27,475 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a3f08>
+2020-05-06 19:28:25,391 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-06 19:28:25,418 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-06 19:28:25,419 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a0b08>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a1747710>
+2020-05-06 19:28:25,419 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24a0b08>
+2020-05-06 19:32:17,989 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-06 19:32:18,012 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-06 19:32:18,013 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24dc358>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a1547320>
+2020-05-06 19:32:18,013 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24dc358>
+2020-05-06 19:32:41,479 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-06 19:32:41,481 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-06 19:32:41,481 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24af588>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16b1e10>
+2020-05-06 19:32:41,482 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24af588>
+2020-05-06 20:06:33,159 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-06 20:06:33,212 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-06 20:06:33,213 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24c4ca8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16bf588>
+2020-05-06 20:06:33,213 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24c4ca8>
+2020-05-06 20:15:49,805 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-06 20:15:49,817 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-06 20:15:49,818 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x24cf938>[cur]:<MySQLdb.cursors.Cursor object at 0x7f76a16bfe10>
+2020-05-06 20:15:49,818 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x24cf938>
+2020-05-07 14:05:59,433 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-07 14:05:59,551 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-07 14:05:59,552 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1caf3c8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f57691fc390>
+2020-05-07 14:05:59,552 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1caf3c8>
+2020-05-07 14:12:23,747 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-07 14:12:23,749 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-07 14:12:23,749 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cae558>[cur]:<MySQLdb.cursors.Cursor object at 0x7f57691f9400>
+2020-05-07 14:12:23,749 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cae558>
+2020-05-07 14:12:42,455 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-07 14:12:42,456 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-07 14:12:42,456 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cbcb88>[cur]:<MySQLdb.cursors.Cursor object at 0x7f57691f93c8>
+2020-05-07 14:12:42,456 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cbcb88>
+2020-05-07 14:16:17,687 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-07 14:16:17,690 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-07 14:16:17,690 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1ca66f8>[cur]:<MySQLdb.cursors.Cursor object at 0x7f576925e3c8>
+2020-05-07 14:16:17,690 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1ca66f8>
+2020-05-08 13:46:15,243 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-08 13:46:15,298 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-08 13:46:15,298 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cc7958>[cur]:<MySQLdb.cursors.Cursor object at 0x7f5769151e80>
+2020-05-08 13:46:15,298 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cc7958>
+2020-05-10 13:32:52,874 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-10 13:32:52,974 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-10 13:32:52,975 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1caf748>[cur]:<MySQLdb.cursors.Cursor object at 0x7f57691fa358>
+2020-05-10 13:32:52,975 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1caf748>
+2020-05-10 13:54:41,676 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-10 13:54:41,803 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-10 13:54:41,803 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cbdb58>[cur]:<MySQLdb.cursors.Cursor object at 0x7f576924e940>
+2020-05-10 13:54:41,804 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cbdb58>
+2020-05-10 14:12:37,865 MyCONN.py[line:69] INFO [action]:connect[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[user]:root
+2020-05-10 14:12:37,868 MyCONN.py[line:118] INFO [action]:query[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[sql]:select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'API-成品';
+2020-05-10 14:12:37,868 MyCONN.py[line:225] INFO [action]:fetchAllRows[status]:OK[host]:127.0.0.1[port]:4999[db]=tasly_warehouse[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cc9238>[cur]:<MySQLdb.cursors.Cursor object at 0x7f5769176588>
+2020-05-10 14:12:37,868 MyCONN.py[line:384] INFO [action]:close[status]:OK[conn]:<_mysql.connection open to '127.0.0.1' at 0x1cc9238>
