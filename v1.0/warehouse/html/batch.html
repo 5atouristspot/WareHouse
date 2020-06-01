@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>天士力圣特仓库智能化仓储方案</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/global.js"></script>
+    <style>
+        .batch-btn-div {
+            padding: 50px 50px 50px 100px;
+            display: flex;
+            flex-flow:row wrap;
+        }
+        .batch-btn {
+            padding: 5px;
+        }
+        .batch-btn button {
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="header-div">
+        <a href="./plan.html"><button class="white-btn">返回</button></a>
+    </div>
+    <div class="batch-btn-div">
+
+    </div>
+</div>
+</body>
+<script>
+  $(document).ready(function() {
+    var type = getUrlParam("type");
+    $.get(
+      global_url + "/api/v1000/elevated/batchinfo",
+      { batch_type: type },
+      function(data) {
+        if (data && data.length > 0) {
+          var html = ''
+
+          for (var i = 0; i < data.length; i++) {
+            var btnClass = 'white-btn';
+            if (data[i].status === 'Q') {
+              btnClass = 'red-btn'
+            } else if (data[i].status === 'S') {
+              btnClass = 'yellow-btn'
+            } else if (data[i].status === '') {
+              btnClass = 'green-btn'
+            }
+
+            html += '<div class="batch-btn"><a href="./detail.html?type=batch&batch_type=' +
+              type +
+              '&batchnum=' +
+              data[i].batch +
+              '"><button class="' + btnClass + '">' + data[i].batch + '</button></a></div>'
+          }
+          $(".batch-btn-div").html(html);
+        }
+      },
+      'json'
+    );
+  });
+</script>
+</html>
