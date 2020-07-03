@@ -7,11 +7,16 @@ import store from './store'
 import axios from 'axios'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './common.css'
 
 Vue.use(iView)
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = 'http://127.0.0.1:3622'
+//axios.defaults.baseURL = 'http://127.0.0.1:3622'
+//axios.defaults.baseURL = 'http://192.168.138.129:3621'
 axios.defaults.auth = {
       username: localStorage.token,
       password: 'unused',
