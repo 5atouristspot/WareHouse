@@ -75,6 +75,7 @@ data () {
          password: 'unused',
            }
       this.$axios.post('/api/v1000/elevated/batchinfo?batch_type=2'
+      //this.$axios.post('/api/v1000/elevated/searchinfo'
       //,{
       //  headers: {
       //     'Content-Type': 'application/json',
