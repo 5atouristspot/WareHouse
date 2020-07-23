@@ -1,0 +1,65 @@
+.el-button {
+  font-weight: 600;
+}
+.el-button--primary {
+  color: #000000;
+  font-size: 30px;
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+.el-button--primary:hover, .el-button--primary:focus  {
+  color: #222222;
+  font-size: 30px;
+  background-color: #409EFF;
+  border-color: #409EFF;
+}
+
+.red-btn {
+  color: #111111;
+  background-color: #f5222d;
+  border-color: #f5222d;
+}
+.red-btn:hover, .red-btn:focus {
+  color: #333333;
+  background-color: #ff4d4f;
+  border-color: #ff4d4f;
+}
+
+.green-btn {
+  color: #333333;
+  background-color: #19ce50;
+  border-color: #19ce50;
+}
+.green-btn:hover, .green-btn:focus {
+  color: #555555;
+  background-color: #4fd678;
+  border-color: #4fd678;
+}
+
+.yellow-btn {
+  color: #333333;
+  background-color: #ffff33;
+  border-color: #ffff33;
+}
+.yellow-btn:hover, .yellow-btn:focus {
+  color: #555555;
+  background-color: #ffff66;
+  border-color: #ffff66;
+}
+
+.white-btn {
+  color: #333333;
+  background: #fff;
+  border: 1px solid #888888;
+}
+.white-btn:hover, .white-btn:focus {
+  color: #555555;
+  background: #fff;
+  border: 1px solid #666666;
+}
+.global-bg-color {
+  background-color: #FFEFD5;
+}
+html {
+  background-color: #FFEFD5;
+}
