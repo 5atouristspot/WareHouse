@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>天士力圣特仓库智能化仓储方案</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/global.js"></script>
+    <style>
+      .content-div {
+        margin-top: 50px;
+        width: 4000px;
+      }
+      .item-div {
+        display: flex;
+        margin: 30px 0;
+      }
+      .item-title-div {
+        width: 130px;
+        text-align: right;
+        margin-right: 20px;
+      }
+      .item-content-div-calc {
+        width: calc(100% - 150px);
+      }
+      .item-content-div-margin {
+        margin: 0 50px;
+      }
+      .div-null {
+        width: 100px;
+        margin: 2px;
+        display: inline-block;
+      }
+      .item-content-div button {
+        font-size: 12px;
+        width: 100px;
+        height: 30px;
+        margin: 2px;
+      }
+
+      .big-btn {
+        width: 200px !important;
+        height: 80px !important;
+        margin: 5px !important;
+	font-size: 20px !important;
+      }
+
+      .top-div {
+        display: flex;
+        margin: 30px 40px 0 40px;
+      }
+      .detail-div {
+        margin-right: 5px;
+      }
+      .ml{
+        margin-left: 60px;
+        font-weight: bold;
+      }
+      .detail-item-div {
+        display: flex;
+        margin: 5px 0;
+        font-size: 15px;
+      }
+      .detail-item-title-div {
+        min-width: 120px;
+        text-align: right;
+        padding-right: 5px;
+        margin-right: 5px;
+        background-color: #e8e8e8;
+        line-height: 40px;
+      }
+      .detail-item-content-div {
+        min-width: 60px;
+        padding: 0 10px;
+        line-height: 40px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header-div">
+        <a href="./plan.html"><button class="white-btn">返回</button></a>
+      </div>
+      <div class="top-div">
+      </div>
+      <div class="content-div">
+        <div class="item-div"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      var type = getUrlParam("type");
+
+      $.get(
+        global_url + "/api/v1000/elevated/utilization_rate",
+        { warehouse_type: type },
+        function(data) {
+          if (data && data.length > 0) {
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+              var detailClass = '';
+              if (data[i].name === 'total') {
+                detailClass = 'ml';
+              }
+              html += '<div class="detail-div ' + detailClass + '">';
+              var list = data[i].list;
+              if (list) {
+                // red-btn yellow-btn green-btn white-btn
+                for (var key in list) {
+                  var value = list[key];
+                  var bgClass = ''
+                  if (key === '2-使用率') {
+                    var pValue = (value*100).toPrecision(12);
+                    pValue = parseFloat(pValue).toFixed(2);
+                    value = pValue + '%';
+                    if (pValue < 50) {
+                      bgClass = 'green-btn';
+                    } else if (50 <= pValue <= 85) {
+                      bgClass = 'yellow-btn';
+                    } else if (pValue > 85) {
+                      bgClass = 'red-btn';
+                    }
+                  }
+                  html += '<div class="detail-item-div"><div class="detail-item-title-div">' + key + '</div><div class="detail-item-content-div ' + bgClass + '">' + value + '</div></div>';
+                }
+              }
+              html += '</div>';
+            }
+            $(".top-div").html(html);
+          }
+        },
+              'json'
+      );
+      $.get(
+        global_url + "/api/v1000/elevated/storagebin",
+        { warehouse_type: type },
+        function(data) {
+          if (data && data.length > 0) {
+            var arr = ['02-05', '02-04', '02-03', '03-05', '03-04', '03-03', '05-05', '05-04', '05-03'];
+            if (type === "1") {
+              var html = "";
+              for (var i = 0; i < data.length; i++) {
+                var itemHtml = '<div class="item-div">';
+                var itemContentHtml =
+                        '<div class="item-title-div">' +
+                        data[i].name +
+                        '</div><div class="item-content-div item-content-div-calc">';
+                var list = data[i].list;
+                list.sort(sortBy('name'));
+                console.log(list);
+                if (list && list.length > 0) {
+                  // red-btn yellow-btn green-btn white-btn
+                  for (var j = 0; j < list.length; j++) {
+
+                    var btnClass = 'white-btn';
+
+                    if (list[j].status === 'Q') {
+                      btnClass = 'red-btn'
+                    } else if (list[j].status === 'S') {
+                      btnClass = 'yellow-btn'
+                    } else if (list[j].status === '') {
+                      btnClass = 'green-btn'
+                    }
+
+                    if (j === 0) {
+                      itemContentHtml += '<div class="div-null"></div>';
+                    }
+                    var currName = list[j].name.substring(0, 5);
+                    var lastName = list[j > 0 ? j - 1 : 0 ].name.substring(0, 5);
+                    if (currName !== lastName) {
+                      itemContentHtml += '<br>';
+                      var flag = false;
+                      for (var m in arr) {
+                        if (arr[m] === currName) {
+                          flag = true;
+                          break;
+                        }
+                      }
+                      if (!flag) {
+                        itemContentHtml += '<div class="div-null"></div>';
+                      }
+                    }
+                    itemContentHtml +=
+                            '<a href="./detail.html?type=' +
+                            type +
+                            "&binum=" +
+                            list[j].name +
+                            '"><button class="' + btnClass + '">' +
+                            list[j].name +
+                            "</button></a>";
+
+                  }
+                }
+                itemContentHtml += "</div>";
+                itemHtml += itemContentHtml;
+                itemHtml += "</div>";
+                html += itemHtml;
+              }
+              $(".content-div").html(html);
+            } else {
+              var itemContentHtml =
+                      '<div class="item-content-div item-content-div-margin">';
+              for (var i = 0; i < data.length; i++) {
+
+                var btnClass = 'white-btn';
+
+                if (data[i].status === 'Q') {
+                  btnClass = 'red-btn'
+                } else if (data[i].status === 'S') {
+                  btnClass = 'yellow-btn'
+                } else if (data[i].status === '') {
+                  btnClass = 'green-btn'
+                }
+
+                itemContentHtml +=
+                        '<a href="./detail.html?type=' +
+                        type +
+                        "&binum=" +
+                        data[i].name +
+                        '"><button class="big-btn ' + btnClass + '">' +
+                        data[i].name +
+                        "</button></a>";
+                if ((i + 1) % 10 === 0) {
+                  itemContentHtml += '<br>';
+                }
+              }
+              itemContentHtml += "</div>";
+              $(".item-div").html(itemContentHtml);
+            }
+          }
+        },
+              'json'
+      );
+    });
+    function sortBy (field) {
+      return function(a, b) {
+        var value1 = a[field].substring(3, 5);
+        var value2 = b[field].substring(3, 5);
+        return value2 - value1;
+      }
+    }
+  </script>
+</html>

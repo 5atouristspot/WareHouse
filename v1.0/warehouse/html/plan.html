@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>天士力圣特仓库智能化仓储方案</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/global.js"></script>
+    <style>
+      .content-div {
+        position: absolute;
+        top: 25%;
+        width: 1500px;
+        text-align: center;
+      }
+      .button-line {
+        display: flex;
+        justify-content: center;
+      }
+      .button-div {
+        margin: 5px;
+      }
+      .button-div button {
+        width: 300px;
+        height: 80px;
+      }
+      .refresh-div {
+        width: 100%;
+        margin-top: 100px;
+      }
+      .refresh-div button {
+        width: 200px;
+        height: 60px;
+      }
+
+      .refresh-time-div {
+        display: none;
+        margin-top: 10px;
+      }
+      .refresh-time-div div {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header-div">
+        <a href="../index.html"><button class="white-btn">返回</button></a>
+      </div>
+      <div class="content-div">
+        <div class="button-line">
+          <div class="button-div">
+            <a href="./warehouse.html?type=1"
+              ><button class="primary-btn">高架库区</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=2"
+              ><button class="primary-btn">高架库预留区</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=3"
+              ><button class="primary-btn">地面库区1</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=4"
+              ><button class="primary-btn">地面库区2</button></a
+            >
+          </div>
+        </div>
+        <div class="button-line">
+          <div class="button-div">
+            <a href="./warehouse.html?type=5"
+              ><button class="primary-btn">生产供料区</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=6"
+              ><button class="primary-btn">低温-18℃冷库区</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=7"
+              ><button class="primary-btn">恒温胶囊库区</button></a
+            >
+          </div>
+          <div class="button-div">
+            <a href="./warehouse.html?type=8"
+              ><button class="primary-btn">包材储存间</button></a
+            >
+          </div>
+        </div>
+          <div class="button-line">
+              <div class="button-div">
+                  <a href="./batch.html?type=1"
+                  ><button class="primary-btn">API-原料</button></a
+                  >
+              </div>
+              <div class="button-div">
+                  <a href="./batch.html?type=2"
+                  ><button class="primary-btn">API-成品</button></a
+                  >
+              </div>
+              <div class="button-div">
+                  <a href="./batch.html?type=3"
+                  ><button class="primary-btn">安全储存柜</button></a
+                  >
+              </div>
+              <div class="button-div">
+                 <a href="./warehouse.html?type=9"
+                 ><button class="primary-btn">冰柜</button></a
+                 >
+              </div>
+	      <div style="width: 0px">
+              </div>
+          </div>
+          <div class="button-line">
+              <div class="button-div">
+                  <a href="./batch.html?type=4"
+                  ><button class="primary-btn">VENDOR</button></a
+                  >
+              </div>
+	      <div class="button-div">
+                 <a href="./warehouse.html?type=10"
+                 ><button class="primary-btn">高架库地面货位</button></a
+                 >
+              </div>
+          </div>
+        <div class="refresh-div">
+          <div><button class="refresh-btn red-btn">刷新数据</button></div>
+          <div class="refresh-time-div">
+            <div>上次刷新时间：</div>
+            <div class="time-div"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      if (window.localStorage) {
+        var localStorage = window.localStorage;
+        var refresh_datetime_cookie = localStorage.getItem(
+          "refresh_datetime_cookie"
+        );
+        if (!$.isEmptyObject(refresh_datetime_cookie)) {
+          showTime(refresh_datetime_cookie);
+        }
+      }
+
+      $(".refresh-btn").click(function() {
+        $.post(
+          global_url + "/api/v1000/elevated/reloaddata",
+          function(data) {
+            if (data && data.status === 0) {
+              var dateTime = getDateTime();
+              showTime(dateTime);
+              if (window.localStorage) {
+                var localStorage = window.localStorage;
+                localStorage.setItem("refresh_datetime_cookie", dateTime);
+              }
+            }
+          },
+          'json'
+        );
+      });
+    });
+
+    function showTime(dateTime) {
+      $(".time-div").text(dateTime);
+      $(".refresh-time-div").show();
+    }
+
+    function getDateTime() {
+      var myDate = new Date();
+      //获取当前年
+      var year = myDate.getFullYear();
+      //获取当前月
+      var month = myDate.getMonth() + 1;
+      //获取当前日
+      var date = myDate.getDate();
+      var h = myDate.getHours(); //获取当前小时数(0-23)
+      var m = myDate.getMinutes(); //获取当前分钟数(0-59)
+      var s = myDate.getSeconds();
+      var now =
+        year +
+        "/" +
+        getNow(month) +
+        "/" +
+        getNow(date) +
+        " " +
+        getNow(h) +
+        ":" +
+        getNow(m) +
+        ":" +
+        getNow(s);
+      return now;
+    }
+    function getNow(s) {
+      return s < 10 ? "0" + s : s;
+    }
+  </script>
+</html>

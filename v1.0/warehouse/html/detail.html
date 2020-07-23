@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>天士力圣特仓库智能化仓储方案</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/global.js"></script>
+    <style>
+      .content-div {
+        margin-top: 50px;
+        width: 100%;
+      }
+      .detail-div {
+        margin: 20px;
+      }
+      .detail-item-div {
+        display: flex;
+        margin: 5px 0;
+        font-size: 20px;
+      }
+      .item-title-div {
+        width: 200px;
+        text-align: right;
+        padding-right: 5px;
+        margin-right: 5px;
+        background-color: #e8e8e8;
+        line-height: 35px;
+      }
+      .item-content-div {
+        min-width: 150px;
+        padding: 0 10px;
+        line-height: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header-div">
+        <a id="goBack"><button class="white-btn">返回</button></a>
+      </div>
+      <div class="content-div"></div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      var type = getUrlParam("type");
+      if (type === 'batch') {
+        var batchType = getUrlParam("batch_type");
+        var batchnum = getUrlParam("batchnum");
+        $("#goBack").attr("href", "./batch.html?type=" + batchType);
+        $.get(
+          global_url + "/api/v1000/elevated/batchdetail",
+          { batch_type: batchType,batchnum: batchnum },
+          function(data) {
+            if (data && data.length > 0) {
+              insertHtml(data);
+            }
+          },
+          'json'
+        );
+      } else {
+        $("#goBack").attr("href", "./warehouse.html?type=" + type);
+        var binum = getUrlParam("binum");
+        $.get(
+          global_url + "/api/v1000/elevated/storagedetail",
+          { binum: binum },
+          function(data) {
+            if (data && data.length > 0) {
+              insertHtml(data);
+            }
+          },
+          'json'
+        );
+      }
+    });
+    function insertHtml(data){
+      var html = "";
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i])
+        if ( data[i].name == "0-material")
+          {
+                     html += "=====================================================================================================================================================";
+          }
+        html += '<div class="detail-div">';
+        html +=
+          '<div class="detail-item-div"><div class="item-title-div">' +
+          data[i].name +
+          "</div>";
+        html +=
+          '<div class="item-content-div">' +
+          data[i].value +
+          "</div></div>";
+        html += "</div>";
+      }
+      $(".content-div").html(html);
+    }
+  </script>
+</html>

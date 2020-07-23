@@ -20,5 +20,7 @@ from . import storage_utilization_rate
 from . import batch_info
 from . import batchdetail_info
 
+from . import search_info
+
 __all__ = ['']
 __author__ = 'zhihao'
