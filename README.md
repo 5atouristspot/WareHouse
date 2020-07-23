@@ -22,6 +22,41 @@ curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU2ODI1Mzc5NiwiZXhwIjoxNTY4MjU0Mzk2fQ.ey
     curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU2ODYwMjI5MywiZXhwIjoxNTY4NjAyODkzfQ.eyJpZCI6M30.2ne7-y1qUM1RyioKqTsthwL2Ik2FNRbed3rbQ8foav9JZ6KNy6PZjhvAl0EH1SS6Af17-GyZRySOKQFFdhT2KQ:unused -X GET -H "Content-Type: application/json"  http://127.0.0.1:3621/api/v1000/elevated/batchdetail?batch_type=1\&batchnum='19000231'
 ```
 
+```
+搜索接口
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NTQ3MDQ2NCwiZXhwIjoxNTk1NDcxMDY0fQ.eyJpZCI6M30.2Tz_zbdm-r618-Q1O7qj_DulhgvJX8KYISUMCPZPhcZ12sLjoruBAv3eCwUU4BMS3jYJNVe2s6d8ESo_-bs07w:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo
+
+返回json格式
+[
+    {
+        "id":6162,
+        "material":"NA",
+        "storage_bin":"04-01-17",
+        "batch":"1702001",
+        "material_desc":"100ml瓶盖",
+        "avail_stock":"1657.0",
+        "unit":"EA",
+        "last_goods_rec":"2019-04-15",
+        "date_of_manuf":"2017-01-12",
+        "sled_bbd":"0",
+        "next_inspection":"0"
+    },
+    {
+        "id":6163,
+        "material":"NA",
+        "storage_bin":"04-01-17",
+        "batch":"1802001",
+        "material_desc":"100ml新品瓶体",
+        "avail_stock":"683.0",
+        "unit":"EA",
+        "last_goods_rec":"2019-04-15",
+        "date_of_manuf":"2018-01-25",
+        "sled_bbd":"0",
+        "next_inspection":"0"
+    }
+]
+```
+
 #启动项目
 ##导入数据库
 
