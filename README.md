@@ -24,7 +24,14 @@ curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU2ODI1Mzc5NiwiZXhwIjoxNTY4MjU0Mzk2fQ.ey
 
 ```
 搜索接口
-curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NTQ3MDQ2NCwiZXhwIjoxNTk1NDcxMDY0fQ.eyJpZCI6M30.2Tz_zbdm-r618-Q1O7qj_DulhgvJX8KYISUMCPZPhcZ12sLjoruBAv3eCwUU4BMS3jYJNVe2s6d8ESo_-bs07w:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=storage_bin\&search_key='04-01-17'
+
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material_desc\&search_key='100ml'
+
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=batch\&search_key='1702001'
+
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material\&search_key='NA'
+
 
 返回json格式
 [
