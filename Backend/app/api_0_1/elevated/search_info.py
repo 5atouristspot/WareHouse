@@ -4,8 +4,8 @@
 Created on 2017-8-29
 
 
-@module: storagebin_info
-@used: get storage bin info
+@module: search_info
+@used: get search info info
 """
 
 from . import api
@@ -50,6 +50,25 @@ def searchinfo():
     }
     ]
     '''
+    search_type = request.args.get('search_type', type=str, default="")
+    search_key = request.args.get('search_key', type=str, default="")
+
+    if search_type == "storage_bin":
+        # 通过storage_bin字段搜索
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where storage_bin like '%{search_key}%' order by id;".format(search_key=search_key)
+    elif search_type == "material":
+        # 通过material字段搜索
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where material like '%{search_key}%' order by id;".format(search_key=search_key)
+    elif search_type == "batch":
+        # 通过batch字段搜索
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where batch like '%{search_key}%' order by id;".format(search_key=search_key)
+    elif search_type == "material_desc":
+        # 通过material_desc字段搜索
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where material_desc like '%{search_key}%' order by id;".format(search_key=search_key)
+    else:
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
+
+
     try:
         dbconfig = {'host': config.get('META', 'host'),
                     'port': int(config.get('META', 'port')),
@@ -59,7 +78,7 @@ def searchinfo():
                     'charset': 'utf8'}
 
         #sql = "select a.storage_bin,a.batch,b.status from tasly_warehouse_storage_info a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.storage_bin = 'API-原料';"
-        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
+        #sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
         db = MySQL(dbconfig)
         db.query(sql)
         storagebin_info = db.fetchAllRows()
