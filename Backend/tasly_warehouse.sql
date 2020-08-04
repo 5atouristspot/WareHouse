@@ -15,6 +15,60 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+--
+-- 物料追溯相关表
+--
+
+CREATE TABLE `batch_order_relation` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `material` varchar(255) NOT NULL DEFAULT '' COMMENT '物料号',
+  `material_description` varchar(255) NOT NULL DEFAULT '' COMMENT '物料描述',
+  `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `plant` varchar(255) NOT NULL DEFAULT '' COMMENT '设备',
+  `stroage_location` varchar(255) NOT NULL DEFAULT '' COMMENT '存储位置',
+  `item` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `movement_type` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `batch` varchar(255) NOT NULL DEFAULT '' COMMENT '批号',
+  `order` varchar(255) NOT NULL DEFAULT '' COMMENT '订单号',
+  `vendor` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `posting_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '放入时间',
+  `material_document` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `purchase_order` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `quantity` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT '数量',
+  `qty_u_e` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT 'Qty in Un. of Entry',
+  `amount` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT 'Amount in LC',
+  `document_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '归档时间',
+  `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品批号　与　生成产品的订单的关系';
+
+
+
+CREATE TABLE `component_list` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `order` varchar(255) NOT NULL DEFAULT '' COMMENT '订单号',
+  `material` varchar(255) NOT NULL DEFAULT '' COMMENT '物料号',
+  `item_component_list` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `requirement_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '必要时间',
+  `requantity` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT '必要数量',
+  `quantity_wi` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT '撤回数量',
+  `unit` varchar(255) NOT NULL DEFAULT '' COMMENT '单位',
+  `material_description` varchar(255) NOT NULL DEFAULT '' COMMENT '物料描述',
+  `batch` varchar(255) NOT NULL DEFAULT '' COMMENT '批号',
+  `operation_act` varchar(255) NOT NULL DEFAULT '' COMMENT 'operation activity',
+  `reitem` varchar(255) NOT NULL DEFAULT '' COMMENT 'reservation item',
+  `plant` varchar(255) NOT NULL DEFAULT '' COMMENT '设备',
+  `stroage_location` varchar(255) NOT NULL DEFAULT '' COMMENT '存储位置',
+  `message_type` varchar(255) NOT NULL DEFAULT '' COMMENT '信息类型',
+  `system_status` varchar(255) NOT NULL DEFAULT '' COMMENT '系统状态',
+  `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组件清单';
+
+
+
+
 --
 -- Table structure for table `WareHouse_users`
 --
