@@ -24,13 +24,13 @@ curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU2ODI1Mzc5NiwiZXhwIjoxNTY4MjU0Mzk2fQ.ey
 
 ```
 搜索接口
-curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=storage_bin\&search_key='04-01-17'
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=storage_bin\&search_keys="04-01-18+04-01-17"
 
-curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material_desc\&search_key='100ml'
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material_desc\&search_keys='100ml+ml'
 
-curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=batch\&search_key='1702001'
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=batch\&search_keys='1702001+17011'
 
-curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material\&search_key='NA'
+curl -i -u eyJhbGciOiJIUzUxMiIsImlhdCI6MTU5NjQ0NjEzNywiZXhwIjoxNTk2NDQ2NzM3fQ.eyJpZCI6M30.4BHm99cMmKkl-nBCTVt0_rOGCXZIJ2s_I0CZCt8SN25HZQ_mPkdOaJ-yn-VDgAB3IPrDz78tBNAHl8nVSV2nzA:unused -X GET -H "Content-Type: application/json" http://127.0.0.1:3622/api/v1000/elevated/searchinfo?search_type=material\&search_keys='NA+0.0'
 
 
 返回json格式
