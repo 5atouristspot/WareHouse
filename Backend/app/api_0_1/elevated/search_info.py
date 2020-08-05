@@ -51,23 +51,30 @@ def searchinfo():
     ]
     '''
     search_type = request.args.get('search_type', type=str, default="")
-    search_key = request.args.get('search_key', type=str, default="")
+    search_keys = request.args.get('search_keys', type=str, default="")
 
+    '''
     if search_type == "storage_bin":
         # 通过storage_bin字段搜索
-        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where storage_bin like '%{search_key}%' order by id;".format(search_key=search_key)
+        sql = build_sql(search_type, search_keys)
     elif search_type == "material":
         # 通过material字段搜索
-        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where material like '%{search_key}%' order by id;".format(search_key=search_key)
+        sql = build_sql(search_type, search_keys)
     elif search_type == "batch":
         # 通过batch字段搜索
-        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where batch like '%{search_key}%' order by id;".format(search_key=search_key)
+        sql = build_sql(search_type, search_keys)
     elif search_type == "material_desc":
         # 通过material_desc字段搜索
-        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where material_desc like '%{search_key}%' order by id;".format(search_key=search_key)
+        sql = build_sql(search_type, search_keys)
     else:
         sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
-
+    '''
+    if search_type in ["storage_bin", "material", "batch", "material_desc"]:
+        logger.error(search_type)
+        logger.error(search_keys)
+        sql = build_sql(search_type, search_keys)
+    else:
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
 
     try:
         dbconfig = {'host': config.get('META', 'host'),
@@ -110,3 +117,18 @@ def searchinfo():
                     "[Errorcode]:{e}".format(e=e, host=config.get('META', 'host'), port=int(config.get('META', 'port')))
 
         logger.error(error_msg)
+
+
+def build_sql(search_type,search_keys):
+    if len(search_keys.split(' ')) <= 1:
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where {search_type} like '%{search_key}%' order by id;".format(
+            search_key=search_keys, search_type=search_type)
+    else:
+        sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where {search_type} like '%{search_key}%'".format(
+            search_key=search_keys.split(' ')[0],search_type=search_type)
+        for search_key in search_keys.split(' ')[1:]:
+            sql_extra = " or {search_type} like '%{search_key}%'".format(search_key=search_key,search_type=search_type)
+            sql = sql + sql_extra
+        sql = sql + " order by id;"
+
+    return sql
