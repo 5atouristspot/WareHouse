@@ -133,10 +133,21 @@
     methods: {
       init() {
 
-      }
-    },
-    methods: {
+      },
       doSearch() {
+
+        let reqParams = {
+          search_type: this.searchSelect,
+          search_keys: this.searchInput
+        }
+        console.log("params:" + JSON.stringify(reqParams))
+        this.$axios.get('/api/v1000/elevated/searchinfo', {params : reqParams}).then(res => {
+          let data = res.data
+          if (data && data.length > 0) {
+            this.tableData1 = data
+          }
+        })
+        this.tableData1 = [];
         for (let i = 0; i < 20; i++) {
           let item = {
             "id":6160 + i,
