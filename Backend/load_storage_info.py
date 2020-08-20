@@ -1,15 +1,11 @@
-#! /data1/mycode/tasly_warehouse/venv/bin/python
 # -*- coding: utf-8 -*-
-from MyCONN import MySQL
+from utils.MyCONN import MySQL
 
 import time
 import xlrd
 from xlrd import open_workbook
 import os
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 # 所需读取文件数
 files_num = 1
@@ -83,7 +79,7 @@ def Preservative_str(base_info):
 def Preservative_date(datestr_col):
     if table.cell(j, datestr_col).value != '':
         datestr = xlrd.xldate.xldate_as_datetime(table.cell(j, datestr_col).value, 0)
-        print datestr
+        print (datestr)
         datestr = str(datestr).split(' ')[0]
         datestr = "'" + datestr + "'"
         # print datestr
@@ -113,9 +109,9 @@ def insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin, batch, 
 
 for i in range(1, files_num + 1):
     try:
-        print '开始处理文件', i
+        print ('开始处理文件', i)
         address = file_address + 'test_data.xls'
-        print '文件路径', address
+        print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)
         rows = table.nrows
@@ -138,7 +134,7 @@ for i in range(1, files_num + 1):
             #print material
 
             storage_bin = Preservative(storage_bin_col)
-            print storage_bin
+            print (storage_bin)
 
             batch = Preservative(batch_col)
             #print batch
@@ -170,8 +166,8 @@ for i in range(1, files_num + 1):
             insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin,  batch, material_desc, avail_stock, unit,
                                                 last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status)
 
-    except Exception, e:
-        print e
+    except Exception as e:
+        print (e)
         continue
 
-    print '文件%d处理完成' % i
+    print ('文件%d处理完成' % i)
