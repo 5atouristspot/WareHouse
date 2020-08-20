@@ -22,5 +22,7 @@ from . import batchdetail_info
 
 from . import search_info
 
+from . import material_trace
+
 __all__ = ['']
 __author__ = 'zhihao'
