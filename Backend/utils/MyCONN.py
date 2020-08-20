@@ -13,7 +13,7 @@ import MySQLdb
 import time
 
 from .MyLOG import MyLog
-from Backend.utils.MyFILE import project_abdir, recursiveSearchFile
+from utils.MyFILE import project_abdir, recursiveSearchFile
 logConfig = recursiveSearchFile(project_abdir, '*logConfig.ini')[0]
 mylog = MyLog(logConfig, 'MyCONN.py')
 logger = mylog.outputLog()
