@@ -40,6 +40,7 @@ CREATE TABLE `batch_order_relation` (
   `amount` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT 'Amount in LC',
   `document_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '归档时间',
   `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  `batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级batch号,用逗号隔开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品批号　与　生成产品的订单的关系';
 
@@ -63,6 +64,8 @@ CREATE TABLE `component_list` (
   `message_type` varchar(255) NOT NULL DEFAULT '' COMMENT '信息类型',
   `system_status` varchar(255) NOT NULL DEFAULT '' COMMENT '系统状态',
   `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  `pid` varchar(255) NOT NULL DEFAULT '' COMMENT '通过batch_order_relation.batches找到该列的上级，并把对应的component_list.id填入',
+  `batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级id号,用逗号隔开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组件清单';
 
