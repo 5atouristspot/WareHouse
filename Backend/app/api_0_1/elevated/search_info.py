@@ -28,7 +28,7 @@ config.read(colConfig)
 
 from Backend.app.views import auth
 
-__all__ = ['batch']
+__all__ = ['searchinfo']
 __author__ = 'zhihao'
 
 @api.route('/searchinfo', methods=['GET', 'POST'])
@@ -70,8 +70,8 @@ def searchinfo():
         sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
     '''
     if search_type in ["storage_bin", "material", "batch", "material_desc"]:
-        logger.error(search_type)
-        logger.error(search_keys)
+        #logger.error(search_type)
+        #logger.error(search_keys)
         sql = build_sql(search_type, search_keys)
     else:
         sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info order by id;"
