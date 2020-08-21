@@ -46,7 +46,10 @@ def materialtrace():
                     'charset': 'utf8'}
         boxes = []
         db = MySQL(dbconfig)
-        sql = "select batch,order_num from batch_order_relation where movement_type in (101) and batch = '{batch}' order by posting_date desc ;". \
+        #sql = "select batch,order_num from batch_order_relation where movement_type in (101) and batch = '{batch}' order by posting_date desc ;". \
+        #    format(batch=batch)
+
+        sql = "select batch,order_num from batch_order_relation where movement_type in (101) and batch = '{batch}' group by batch,order_num ;". \
             format(batch=batch)
         db.query(sql)
         batch_order_num_info = db.fetchAllRows()
@@ -58,8 +61,9 @@ def materialtrace():
             batch = batch_order_num[0]
             order_num = batch_order_num[1]
 
-            get_tree_first_level_node_info(dbconfig, order_num, batch, box)
-            boxes.append(box)
+            tree_node_info = get_tree_first_level_node_info(dbconfig, order_num, batch, box)
+            tree_info = list_to_tree(tree_node_info)
+            boxes.append(tree_info)
 
         #print(boxes)
 
@@ -106,8 +110,8 @@ def get_tree_first_level_node_info(dbconfig, order_num, batch, box):
             if batches != '':
                 get_tree_other_level_node_info(dbconfig, batches, batch, box)
 
-        list_to_tree(box)
-        return
+        #list_to_tree(box)
+        return box
     except Exception as e:
         print(e)
 
