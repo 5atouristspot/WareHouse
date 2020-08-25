@@ -15,7 +15,7 @@
                 </el-option>
               </el-select>
               <el-input class="search-input" v-model="searchInput" placeholder="请输入内容"></el-input>
-              <el-button type="primary" icon="el-icon-search" @click="doSearch()">搜索</el-button>
+              <el-button type="primary" icon="el-icon-search" @click="doSearch1()">搜索</el-button>
             </div>
             <div class="query-result-div" style="margin: 20px;">
               <el-table
@@ -74,20 +74,72 @@
             </div>
           </el-tab-pane>
           <el-tab-pane label="物料追溯">
-            <div class="query-criteria-div" style="margin: 10px 30px;">
-              <el-select v-model="retrospectSelect" placeholder="请选择">
+            <div class="query-criteria-div" style="margin: 20px 30px 10px 30px;">
+              <!--<el-select v-model="retrospectSelect" placeholder="请选择">
                 <el-option
                   v-for="item in retrospectOptions"
                   :key="item.value"
                   :label="item.label"
                   :value="item.value">
                 </el-option>
-              </el-select>
+              </el-select>-->
               <el-input class="search-input" v-model="retrospectInput" placeholder="请输入内容"></el-input>
-              <el-button type="primary" icon="el-icon-search">搜索</el-button>
+              <el-button type="primary" icon="el-icon-search" @click="doSearch2()">搜索</el-button>
             </div>
             <div class="query-result-div" style="margin-top: 10px;">
-
+              <el-table
+                :data="tableData2"
+                style="width: 100%"
+                row-key="id"
+                stripe
+                border
+                default-expand-all
+                :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+                <el-table-column
+                  prop="id"
+                  label="id"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="material"
+                  label="material"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="material_description"
+                  label="material_description">
+                </el-table-column>
+                <el-table-column
+                  prop="order_num"
+                  label="order_num"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="batch"
+                  label="batch"
+                  width="130">
+                </el-table-column>
+                <el-table-column
+                  prop="quantity_wi"
+                  label="quantity_wi"
+                  width="130">
+                </el-table-column>
+                <el-table-column
+                  prop="unit"
+                  label="unit"
+                  width="100">
+                </el-table-column>
+                <el-table-column
+                  prop="pid"
+                  label="pid"
+                  width="120">
+                </el-table-column>
+                <el-table-column
+                  prop="posting_date"
+                  label="posting_date"
+                  width="150">
+                </el-table-column>
+              </el-table>
             </div>
           </el-tab-pane>
         </el-tabs>
@@ -128,25 +180,26 @@
           label: '物料号'
         }],
         tableData1:[],
+        tableData2:[],
       }
     },
     methods: {
       init() {
 
       },
-      doSearch() {
+      doSearch1() {
 
-        let reqParams = {
+        let searchReqParams = {
           search_type: this.searchSelect,
           search_keys: this.searchInput
         }
-        console.log("params:" + JSON.stringify(reqParams))
-        this.$axios.get('/api/v1000/elevated/searchinfo', {params : reqParams}).then(res => {
+        this.$axios.get('/api/v1000/elevated/searchinfo', {params : searchReqParams}).then(res => {
           let data = res.data
           if (data && data.length > 0) {
             this.tableData1 = data
           }
         })
+        // 临时假数据
         this.tableData1 = [];
         for (let i = 0; i < 20; i++) {
           let item = {
@@ -164,6 +217,19 @@
           }
           this.tableData1.push(item);
         }
+      },
+      doSearch2() {
+        let retrospectReqParams = {
+          batch: this.retrospectInput
+        }
+        this.$axios.get('/api/v1000/elevated/materialtrace', {params : retrospectReqParams}).then(res => {
+          let data = res.data
+          if (data && data.length > 0) {
+            this.tableData1 = data
+          }
+        })
+        // 临时假数据
+        this.tableData2 = [{"id":159935,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101632","batch":"16000106","quantity_wi":32900.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159937,"material":"40022","material_description":"Silibinin Capsules35mg*3*10EA Carton","order_num":"101632","batch":"16000110","quantity_wi":32655.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159939,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101632","batch":"16000075","quantity_wi":13.09,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":159941,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000093","quantity_wi":114.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159942,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000119","quantity_wi":50.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159944,"material":"40024","material_description":"Silibinin Capsules35mg*3*10EA Paperboard","order_num":"101632","batch":"16000094","quantity_wi":330.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159945,"material":"70008","material_description":"Silibinin Capsules 35mg*2*10EA","order_num":"101632","batch":"650605018","quantity_wi":972700.0,"unit":"EA","pid":0,"posting_date":"2016-08-22","children":[{"id":158825,"material":"60010","material_description":"Silibinin Capsules 35mg","order_num":"101563","batch":"600903050","quantity_wi":975181.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22","children":[{"id":157823,"material":"10001","material_description":"silibinin","order_num":"101503","batch":"15000383","quantity_wi":35.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157825,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"15000354","quantity_wi":0.39,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157826,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"16000033","quantity_wi":64.61,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157828,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":480.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157830,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":20.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157832,"material":"20033","material_description":"Lactose (SpheroLac 100)","order_num":"101503","batch":"15000369","quantity_wi":106.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157834,"material":"20034","material_description":"Talc Powder","order_num":"101503","batch":"16000036","quantity_wi":31.46,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157836,"material":"20029","material_description":"Glycolys STD","order_num":"101503","batch":"16000006","quantity_wi":20.6,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157838,"material":"20036","material_description":"Silibinin printing 1#vacant capsules","order_num":"101503","batch":"15000366","quantity_wi":975395.0,"unit":"EA","pid":158825,"posting_date":"2016-05-09"}]},{"id":158827,"material":"30010","material_description":"PVC/PVDC Colorless 231mm","order_num":"101563","batch":"16000038","quantity_wi":175.2,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158829,"material":"30011","material_description":"AluminumFoil231mm SilibininCapsules 35mg","order_num":"101563","batch":"16000026","quantity_wi":29.65,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158831,"material":"30012","material_description":"Tropical Type Blister AluminumFoil 231mm","order_num":"101563","batch":"16000027","quantity_wi":96.91,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158833,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000025","quantity_wi":3244.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158834,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000044","quantity_wi":45495.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158836,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000068","quantity_wi":30509.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158837,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000085","quantity_wi":18226.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158839,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000013","quantity_wi":7.33,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158840,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000018","quantity_wi":8.36,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158842,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000060","quantity_wi":8.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158843,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000069","quantity_wi":157.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158845,"material":"40021","material_description":"Silibinin Capsules35mg*2*10EA Paperboard","order_num":"101563","batch":"16000061","quantity_wi":336.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"}]}];
       }
     },
     components: {
