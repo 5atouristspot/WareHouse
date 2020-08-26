@@ -65,7 +65,11 @@ def materialtrace():
             tree_info = list_to_tree(tree_node_info)
             #logger.error(tree_info)
 
-            boxes.append({"order_num": "{order_num}".format(order_num=order_num), "list": "{tree_info}".format(tree_info=tree_info)})
+            res = {}
+            res.setdefault("order_num", "{order_num}".format(order_num=order_num))
+            res.setdefault("list", tree_info)
+            boxes.append(res)
+            #boxes.append({"order_num": "{order_num}".format(order_num=order_num), res.setdefault("list", []).append(tree_info)} )
             #boxes.append(tree_info)
 
         #print(boxes)
