@@ -44,10 +44,9 @@ next_inspection_col = 10
 status_col = 11
 
 
-file_address = r'/data1/mycode/tasly_warehouse/'
+file_address = r'/data1/mycode/WareHouse/Backend/'
 
 
-# 先判断是否为空；然后判断是否为字符串型
 def Preservative(base_info):
     if table.cell(j, base_info).value != '':
         sex_old = str(table.cell(j, base_info).value)
@@ -73,7 +72,7 @@ def Preservative_str(base_info):
     if table.cell(j, base_info).value != '':
         res = table.cell(j, base_info).value
     else:
-        res = "'" + '' + "'"
+        res = ""
     return res
 
 def Preservative_date(datestr_col):
@@ -133,10 +132,10 @@ for i in range(1, files_num + 1):
             material = Preservative_str(material_col)
             #print material
 
-            storage_bin = Preservative(storage_bin_col)
+            storage_bin = Preservative_str(storage_bin_col)
             print (storage_bin)
 
-            batch = Preservative(batch_col)
+            batch = Preservative_str(batch_col)
             #print batch
 
             material_desc = Preservative_str(material_desc_col)
@@ -145,7 +144,7 @@ for i in range(1, files_num + 1):
             avail_stock = Preservative_float(avail_stock_col)
             #print avail_stock
 
-            unit = Preservative(unit_col)
+            unit = Preservative_str(unit_col)
             #print unit
 
             last_goods_rec = Preservative_date(last_goods_rec_col)
@@ -160,7 +159,7 @@ for i in range(1, files_num + 1):
             next_inspection = Preservative_date(next_inspection_col)
             #print next_inspection
 
-            status = Preservative(status_col)
+            status = Preservative_str(status_col)
             #print status
 
             insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin,  batch, material_desc, avail_stock, unit,
