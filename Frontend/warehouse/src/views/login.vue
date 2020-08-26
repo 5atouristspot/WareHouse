@@ -73,7 +73,7 @@ import axios from 'axios';
                             this.$Message.success("提交成功")
                             let data = response.data
                             this.$store.commit('set_token', data)
-                            this.$router.push('/searchinfo')
+                            this.$router.push('/plan')
                         }).catch(error => {
                             this.$Message.error(error.status)
                         })
