@@ -104,7 +104,7 @@
                   <el-table-column
                     prop="material"
                     label="material"
-                    width="100">
+                    width="130">
                   </el-table-column>
                   <el-table-column
                     prop="material_description"
@@ -113,7 +113,7 @@
                   <el-table-column
                     prop="order_num"
                     label="order_num"
-                    width="120">
+                    width="130">
                   </el-table-column>
                   <el-table-column
                     prop="batch"
@@ -128,13 +128,13 @@
                   <el-table-column
                     prop="unit"
                     label="unit"
-                    width="100">
+                    width="130">
                   </el-table-column>
-                  <el-table-column
+                  <!--<el-table-column
                     prop="pid"
                     label="pid"
                     width="120">
-                  </el-table-column>
+                  </el-table-column>-->
                   <el-table-column
                     prop="posting_date"
                     label="posting_date"
