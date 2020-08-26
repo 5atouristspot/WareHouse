@@ -32,7 +32,10 @@
         let reqParams = {
           batch_type: this.type
         }
-        console.log("params:" + JSON.stringify(reqParams))
+        this.$axios.defaults.auth = {
+          username: localStorage.token,
+          password: 'unused'
+        }
         this.$axios.get('/api/v1000/elevated/batchinfo', {params : reqParams}).then(res => {
           let data = res.data
           if (data && data.length > 0) {

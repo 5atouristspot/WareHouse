@@ -36,7 +36,10 @@
             batch_type: this.batchType,
             batchnum: this.binum
           }
-          console.log("params:" + JSON.stringify(reqParams))
+          this.$axios.defaults.auth = {
+            username: localStorage.token,
+            password: 'unused'
+          }
           this.$axios.get('/api/v1000/elevated/batchdetail', {params : reqParams}).then(res => {
             let data = res.data
             if (data && data.length > 0) {
@@ -50,7 +53,10 @@
           let reqParams = {
             binum: this.binum
           }
-          console.log("params:" + JSON.stringify(reqParams))
+          this.$axios.defaults.auth = {
+            username: localStorage.token,
+            password: 'unused'
+          }
           this.$axios.get('/api/v1000/elevated/storagedetail', {params : reqParams}).then(res => {
             let data = res.data
             if (data && data.length > 0) {
