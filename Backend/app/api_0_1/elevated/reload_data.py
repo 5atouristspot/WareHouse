@@ -30,7 +30,7 @@ __author__ = 'zhihao'
 @auth.login_required
 def reload_data():
     try:
-        (status, output) = subprocess.getstatusoutput('cd /data1/mycode/tasly_warehouse/ && /data1/mycode/tasly_warehouse/venv/bin/python ./load_storage_info.py')
+        (status, output) = subprocess.getstatusoutput('cd /data1/mycode/WareHouse/Backend/ && /data1/mycode/WareHouse/Backend/venv/bin/python ./load_storage_info_bak.py')
 
         keys = ['status', 'output']
         values = [status, output]
