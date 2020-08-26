@@ -63,7 +63,10 @@ def materialtrace():
 
             tree_node_info = get_tree_first_level_node_info(dbconfig, order_num, batch, box)
             tree_info = list_to_tree(tree_node_info)
-            boxes.append(tree_info)
+            #logger.error(tree_info)
+
+            boxes.append({"order_num": "{order_num}".format(order_num=order_num), "list": "{tree_info}".format(tree_info=tree_info)})
+            #boxes.append(tree_info)
 
         #print(boxes)
 
@@ -162,4 +165,6 @@ def list_to_tree(data):
     for v in data:
         res.setdefault(v["pid"], {}).setdefault("children", []).append(v)
         # 这里默认的关联关系，v的内存地址是一致的，所以后续修改只后，关联的结构也会变化。
+    #print(res[0]["children"])
+    #logger.error(res[0]["children"])
     return res[0]["children"]
