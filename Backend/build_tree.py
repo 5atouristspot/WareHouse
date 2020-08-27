@@ -37,7 +37,7 @@ def insert_batch_order_relation_batches(dbconfig):
             batches_info = db_component_list.fetchAllRows()
             db_component_list.close()
             if batches_info != ():
-                print(batches_info)
+                #print(batches_info)
                 batches_list = []
                 for batches in batches_info:
                     batches_list.append(str(batches[0]))
@@ -47,7 +47,7 @@ def insert_batch_order_relation_batches(dbconfig):
                 db_batch_order_relation = MySQL(dbconfig)
                 sql_update_batches = "update batch_order_relation set batches = '{batches_result}' where id = {batch_order_relation_id};".\
                     format(batches_result=batches_result,batch_order_relation_id=batch_order_relation_id)
-                print(sql_update_batches)
+                #print(sql_update_batches)
                 db_batch_order_relation.update(sql_update_batches)
                 db_batch_order_relation.close()
 
@@ -72,7 +72,7 @@ def insert_component_list_batches(dbconfig):
         db.close()
 
         for component_list_id, batch in batch_id_info:
-            print(component_list_id, batch)
+            #print(component_list_id, batch)
             db_batch_order_relation = MySQL(dbconfig)
             sql_get_batches = "select batches from batch_order_relation where batch = '{batch}' and movement_type in (101) and order_num != '' and batches != '' order by posting_date limit 1;".format(
                 batch=batch)
@@ -89,7 +89,7 @@ def insert_component_list_batches(dbconfig):
                 db_component_list = MySQL(dbconfig)
                 sql_update_batches = "update component_list set batches = '{batches}' where id = {component_list_id};". \
                     format(batches=batches, component_list_id=component_list_id)
-                print(sql_update_batches)
+                #print(sql_update_batches)
                 db_component_list.update(sql_update_batches)
                 db_component_list.close()
 
@@ -112,7 +112,7 @@ def insert_component_list_pid(dbconfig):
         db.close()
 
         for component_list_id in component_list_id_info:
-            print(component_list_id[0])
+            #print(component_list_id[0])
             db_component_list = MySQL(dbconfig)
             sql_get_batches = "select id from component_list where batches like '%{component_list_id}%' and batch != '';".format(component_list_id=component_list_id[0])
             db_component_list.query(sql_get_batches)
@@ -120,22 +120,22 @@ def insert_component_list_pid(dbconfig):
             db_component_list.close()
 
             if component_list_pid_info != ():
-                print('XXXXX')
-                print(component_list_pid_info)
-                print('XXXXX')
+                #print('XXXXX')
+                #print(component_list_pid_info)
+                #print('XXXXX')
                 batches_list = []
                 for component_list_pid in component_list_pid_info:
                     batches_list.append(str(component_list_pid[0]))
 
                 component_list_pid_result = ','.join(batches_list)
-                print('YYYYY')
-                print(component_list_pid_result)
-                print('YYYYY')
+                #print('YYYYY')
+                #print(component_list_pid_result)
+                #print('YYYYY')
 
                 db_component_list = MySQL(dbconfig)
                 sql_update_batches = "update component_list set pid = '{component_list_pid_result}' where id = {component_list_id};". \
                     format(component_list_pid_result=component_list_pid_result, component_list_id=component_list_id[0])
-                print(sql_update_batches)
+                #print(sql_update_batches)
                 db_component_list.update(sql_update_batches)
                 db_component_list.close()
 
