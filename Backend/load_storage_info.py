@@ -6,6 +6,12 @@ import xlrd
 from xlrd import open_workbook
 import os
 
+from utils.MyFILE import project_abdir, recursiveSearchFile
+import configparser
+config = configparser.ConfigParser()
+colConfig = recursiveSearchFile(project_abdir, '*metaConfig.ini')[0]
+config.read(colConfig)
+
 
 # 所需读取文件数
 files_num = 1
@@ -116,11 +122,11 @@ for i in range(1, files_num + 1):
         rows = table.nrows
         #print rows
 
-        dbconfig = {'host': '127.0.0.1',
-                    'port': 4999,
-                    'user': 'root',
-                    'passwd': 'root',
-                    'db': 'tasly_warehouse',
+        dbconfig = {'host': config.get('META', 'host'),
+                    'port': int(config.get('META', 'port')),
+                    'user': config.get('META', 'user'),
+                    'passwd': config.get('META', 'pwd'),
+                    'db': config.get('META', 'db'),
                     'charset': 'utf8'}
 
         flush_tasly_warehouse_storage_info(dbconfig)

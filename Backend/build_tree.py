@@ -10,7 +10,11 @@ Created on 2020-8-18
 
 from utils.MyCONN import MySQL
 
-
+from utils.MyFILE import project_abdir, recursiveSearchFile
+import configparser
+config = configparser.ConfigParser()
+colConfig = recursiveSearchFile(project_abdir, '*metaConfig.ini')[0]
+config.read(colConfig)
 
 
 
@@ -149,11 +153,11 @@ def insert_component_list_pid(dbconfig):
 
 
 if __name__ == '__main__':
-    dbconfig = {'host': '127.0.0.1',
-                'port': 4999,
-                'user': 'root',
-                'passwd': 'root',
-                'db': 'tasly_warehouse',
+    dbconfig = {'host': config.get('META', 'host'),
+                'port': int(config.get('META', 'port')),
+                'user': config.get('META', 'user'),
+                'passwd': config.get('META', 'pwd'),
+                'db': config.get('META', 'db'),
                 'charset': 'utf8'}
 
     flush_batch_order_relation_batches(dbconfig)
