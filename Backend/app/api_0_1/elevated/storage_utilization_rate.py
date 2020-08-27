@@ -98,7 +98,7 @@ def utilization_rate():
                     util_rate = 0
 
                 #sub_keys = ['total_num', 'vacancy_num', 'util_rate']
-                sub_keys = ['0-'+ rack_type, '1-未使用', '2-使用率']
+                sub_keys = [rack_type, '未使用', '使用率']
                 sub_values = [total_num, vacancy_num, util_rate]
                 detail_info = dict(zip(sub_keys, sub_values))
 
@@ -128,7 +128,7 @@ def utilization_rate():
             else:
                 all_util_rate = 0
 
-            sub_keys = ['0-高架库区1', '1-未使用', '2-使用率']
+            sub_keys = ['高架库区1', '未使用', '使用率']
             sub_values = [all_total_num, all_vacancy_num, all_util_rate]
             detail_info = dict(zip(sub_keys, sub_values))
 
@@ -164,7 +164,7 @@ def utilization_rate():
                 util_rate = 0
 
             #sub_keys = ['total_num', 'vacancy_num', 'util_rate']
-            sub_keys = ['0-库位总量', '1-未使用', '2-使用率']
+            sub_keys = ['库位总量', '未使用', '使用率']
             sub_values = [total_num, vacancy_num, util_rate]
             detail_info = dict(zip(sub_keys, sub_values))
 
