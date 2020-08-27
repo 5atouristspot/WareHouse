@@ -79,7 +79,8 @@ def utilization_rate():
         if warehouse_type == 1:
             rack_type_l = ['一号货架', '二号货架', '三号货架', '四号货架', '五号货架', '六号货架']
             for rack_type in rack_type_l:
-                sql_total = "select count(1) from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '{rack_type}' ;".format(rack_type=rack_type)
+                #sql_total = "select count(1) from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 and a.rack_type = '{rack_type}' ;".format(rack_type=rack_type)
+                sql_total = "select count(1) from tasly_warehouse_storage_bin where warehouse_type = 1 and rack_type = '{rack_type}' ;".format(rack_type=rack_type)
                 db = MySQL(dbconfig)
                 db.query(sql_total)
                 Rack_total_info = db.fetchAllRows()
@@ -109,7 +110,8 @@ def utilization_rate():
 
 
             #高架库区１　总使用率，库位总量，总未使用
-            sql_all_total = "select count(1) from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 ;"
+            #sql_all_total = "select count(1) from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.warehouse_type = 1 ;"
+            sql_all_total = "select count(1) from tasly_warehouse_storage_bin where warehouse_type = 1 ;"
             db = MySQL(dbconfig)
             db.query(sql_all_total)
             Rack_all_total_info = db.fetchAllRows()
