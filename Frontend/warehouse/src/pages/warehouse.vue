@@ -57,7 +57,7 @@
         utilizationRateList: [],
         storagebinList: [],
         type: '',
-        specialKey: '2-使用率',
+        specialKey: '使用率',
         specialArray: ['02-05', '02-04', '02-03', '03-05', '03-04', '03-03', '05-05', '05-04', '05-03']
       }
     },
