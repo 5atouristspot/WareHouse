@@ -3,7 +3,7 @@
   <GoBack v-bind:target="target"/>
   <div class="detail-content global-bg-color">
     <el-row class="item-row" v-for="(item, index) in detailList" :key="index">
-      <div v-if="item.name === '0-material'" style="overflow: hidden;">================================================================================================================================================================================================================================================</div>
+      <div v-if="item.name === 'material'" style="overflow: hidden;">================================================================================================================================================================================================================================================</div>
       <el-col :span="4" class="subItem-left-col"><div>{{item.name}}</div></el-col>
       <el-col :span="6" class="subItem-right-col"><div>{{item.value}}</div></el-col>
     </el-row>
