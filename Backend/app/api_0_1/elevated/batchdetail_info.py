@@ -100,8 +100,8 @@ def batchdetail():
                 sled_bbd = storagedetail[9]
                 next_inspection = storagedetail[10]
                 inventory_time = Caltime(last_goods_rec)
-                keys = ['0-material','1-storage_bin','2-status','3-batch','4-avail_stock','5-unit','6-material_desc','7-last_goods_rec',
-                        '8-date_of_manuf', '9-sled_bbd','10-next_inspection', '11-inventory_time']
+                keys = ['material','storage_bin','status','batch','avail_stock','unit','material_desc','last_goods_rec',
+                        'date_of_manuf', 'sled_bbd','next_inspection', 'inventory_time']
                 #print keys
                 values = [material, storage_bin, status, batch, avail_stock, unit, material_desc, last_goods_rec, date_of_manuf,
                           sled_bbd, next_inspection, inventory_time]
