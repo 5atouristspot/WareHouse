@@ -70,6 +70,14 @@
                   prop="next_inspection"
                   label="next_inspection">
                 </el-table-column>
+                <el-table-column
+                  prop="inventory_time"
+                  label="inventory_time">
+                </el-table-column>
+                <el-table-column
+                  prop="status"
+                  label="status">
+                </el-table-column>
               </el-table>
             </div>
           </el-tab-pane>
