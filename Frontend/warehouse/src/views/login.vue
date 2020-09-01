@@ -2,6 +2,7 @@
 <div id="login" >
     <Row type="flex" justify="center">
         <img src="../assets/login.jpg" alt="" :style="bg">
+        <div class="big-title">天士力圣特智能化仓储系统</div>
         <Col span="5">
             <Card class="form">
                 <div slot="title">
@@ -95,9 +96,16 @@ import axios from 'axios';
 }
 .form {
     text-align: center;
-    margin-top: 150px;
+    margin-top: 90%;
     p {
         font-size: 30px;
     }
 }
+  .big-title {
+    position: fixed;
+    font-size: 70px;
+    font-weight: 600;
+    color: black;
+    margin-top: 6%;
+  }
 </style>
