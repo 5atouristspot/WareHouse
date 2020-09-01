@@ -2,13 +2,13 @@
   font-weight: 600;
 }
 .el-button--primary {
-  color: #000000;
+  color: #F8F8FF;
   font-size: 30px;
   background-color: #1890ff;
   border-color: #1890ff;
 }
 .el-button--primary:hover, .el-button--primary:focus  {
-  color: #222222;
+  color: #F8F8FF;
   font-size: 30px;
   background-color: #409EFF;
   border-color: #409EFF;

@@ -104,7 +104,7 @@ import axios from 'axios';
   .big-title {
     position: fixed;
     font-size: 70px;
-    font-weight: 600;
+    font-weight: 300;
     color: black;
     margin-top: 6%;
   }
