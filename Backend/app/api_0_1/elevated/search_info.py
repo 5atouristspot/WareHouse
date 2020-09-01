@@ -12,6 +12,8 @@ from . import api
 from flask import request, jsonify, Response
 
 import json
+import time
+import datetime
 
 from Backend.utils.MyFILE import project_abdir, recursiveSearchFile
 from Backend.utils.MyLOG import MyLog
@@ -93,12 +95,15 @@ def searchinfo():
         db.close()
         bin_list = []
         for bin_number in storagebin_info:
-            sub_keys = ['id', 'material', 'storage_bin', 'batch', 'material_desc', 'avail_stock', 'unit', 'last_goods_rec', 'date_of_manuf', 'sled_bbd', 'next_inspection', 'status']
+            last_goods_rec = bin_number[7]
+            inventory_time = Caltime(last_goods_rec)
+
+            sub_keys = ['id', 'material', 'storage_bin', 'batch', 'material_desc', 'avail_stock', 'unit', 'last_goods_rec', 'date_of_manuf', 'sled_bbd', 'next_inspection', 'inventory_time', 'status']
             #if bin_number[1] is None:
             #    sub_values = [bin_number[0], '']
             #else:
             #    sub_values = [bin_number[0], bin_number[1]]
-            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10]]
+            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10], inventory_time, bin_number[11]]
             detail_info = dict(zip(sub_keys, sub_values))
             bin_list.append(detail_info)
             #return jsonify(bin_list)
@@ -120,6 +125,7 @@ def searchinfo():
 
 
 def build_sql(search_type,search_keys):
+
     if len(search_keys.split(' ')) <= 1:
         sql = "select id, material, storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status from tasly_warehouse_storage_info where {search_type} like '%{search_key}%' order by id;".format(
             search_key=search_keys, search_type=search_type)
@@ -132,3 +138,20 @@ def build_sql(search_type,search_keys):
         sql = sql + " order by id;"
 
     return sql
+
+#计算库存时间
+def Caltime(last_goods_rec):
+    #%Y-%m-%d为日期格式，其中的-可以用其他代替或者不写，但是要统一，同理后面的时分秒也一样；可以只计算日期，不计算时间。
+    #date1=time.strptime(date1,"%Y-%m-%d %H:%M:%S")
+    #date2=time.strptime(date2,"%Y-%m-%d %H:%M:%S")
+    date_now = time.strftime("%Y-%m-%d")
+    date1=time.strptime(date_now, "%Y-%m-%d")
+    date2=time.strptime(last_goods_rec, "%Y-%m-%d")
+    #根据上面需要计算日期还是日期时间，来确定需要几个数组段。下标0表示年，小标1表示月，依次类推...
+    #date1=datetime.datetime(date1[0],date1[1],date1[2],date1[3],date1[4],date1[5])
+    #date2=datetime.datetime(date2[0],date2[1],date2[2],date2[3],date2[4],date2[5])
+    date1=datetime.datetime(date1[0],date1[1],date1[2])
+    date2=datetime.datetime(date2[0],date2[1],date2[2])
+    #返回两个变量相差的值，就是相差天数
+    timedelta = str(date1-date2).split(' ')[0]
+    return timedelta
