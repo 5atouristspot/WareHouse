@@ -68,7 +68,7 @@ def materialtrace():
             #logger.info(tree_node_info)
             #TODO:确实是这有问题　着重测这个函数
             tree_info = list_to_tree(tree_node_info)
-            logger.info(tree_info)
+            #logger.info(tree_info)
 
             res = {}
             res.setdefault("order_num", "{order_num}".format(order_num=order_num))
