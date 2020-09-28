@@ -103,12 +103,14 @@ def searchinfo():
             #    sub_values = [bin_number[0], '']
             #else:
             #    sub_values = [bin_number[0], bin_number[1]]
-            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10], inventory_time, bin_number[11]]
+            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10], int(inventory_time), bin_number[11]]
             detail_info = dict(zip(sub_keys, sub_values))
             bin_list.append(detail_info)
             #return jsonify(bin_list)
 
             #print json.dumps(reload_info)
+
+            bin_list.sort(key=takeSecond, reverse=True)
         resp = Response(json.dumps(bin_list))
         resp.headers['Access-Control-Allow-Origin'] = '*'
         resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
@@ -155,3 +157,6 @@ def Caltime(last_goods_rec):
     #返回两个变量相差的值，就是相差天数
     timedelta = str(date1-date2).split(' ')[0]
     return timedelta
+
+def takeSecond(elem):
+    return elem['inventory_time']

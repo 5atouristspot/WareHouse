@@ -16,41 +16,39 @@ config = configparser.ConfigParser()
 colConfig = recursiveSearchFile(project_abdir, '*metaConfig.ini')[0]
 config.read(colConfig)
 
-
-
-def flush_batch_order_relation_batches(dbconfig):
+def flush_batch_order_relation_relationbatches(dbconfig):
     db = MySQL(dbconfig)
-    sql = "update tasly_warehouse.batch_order_relation set batches = '';"
+    sql = "update tasly_warehouse.batch_order_relation set relation_batches = '';"
     db.insert(sql)
     db.close()
 
-
-def insert_batch_order_relation_batches(dbconfig):
+def insert_batch_order_relation_relationbatches(dbconfig):
     try:
         db = MySQL(dbconfig)
-        sql = "select id,order_num from batch_order_relation where movement_type in (101) and order_num != '';"
+        #sql = "select material,material_description,max(id),max(order_num) from batch_order_relation where movement_type in (101) and order_num != '' and batch = '000203007T' group by material,material_description;"
+        sql = "select material,material_description,batch,max(id),max(order_num) from batch_order_relation where movement_type in (101) and order_num != '' group by material,material_description,batch;"
         db.query(sql)
         order_num_id_info = db.fetchAllRows()
         db.close()
 
-        for batch_order_relation_id, order_num in order_num_id_info:
+        for material,material_description,batch,batch_order_relation_id, order_num in order_num_id_info:
             #print(batch_order_relation_id, order_num)
             db_component_list = MySQL(dbconfig)
-            sql_get_batches = "select id from component_list where order_num = '{order_num}' and batch != '';".format(order_num=order_num)
+            sql_get_batches = "select batch,max(id) from batch_order_relation where order_num = '{order_num}' and movement_type in (261) group by batch ;".format(order_num=order_num)
             db_component_list.query(sql_get_batches)
-            batches_info = db_component_list.fetchAllRows()
+            relationbatches_info = db_component_list.fetchAllRows()
             db_component_list.close()
-            if batches_info != ():
+            if relationbatches_info != ():
                 #print(batches_info)
-                batches_list = []
-                for batches in batches_info:
-                    batches_list.append(str(batches[0]))
+                relationbatches_list = []
+                for relationbatches in relationbatches_info:
+                    relationbatches_list.append(str(relationbatches[1]))
 
-                batches_result = ','.join(batches_list)
+                relationbatches_result = ','.join(relationbatches_list)
 
                 db_batch_order_relation = MySQL(dbconfig)
-                sql_update_batches = "update batch_order_relation set batches = '{batches_result}' where id = {batch_order_relation_id};".\
-                    format(batches_result=batches_result,batch_order_relation_id=batch_order_relation_id)
+                sql_update_batches = "update batch_order_relation set relation_batches = '{relationbatches_result}' where id = {batch_order_relation_id};".\
+                    format(relationbatches_result=relationbatches_result, batch_order_relation_id=batch_order_relation_id)
                 #print(sql_update_batches)
                 db_batch_order_relation.update(sql_update_batches)
                 db_batch_order_relation.close()
@@ -60,57 +58,17 @@ def insert_batch_order_relation_batches(dbconfig):
         print(e)
 
 
-def flush_component_list_batches(dbconfig):
+def flush_batch_order_relation_pid(dbconfig):
     db = MySQL(dbconfig)
-    sql = "update tasly_warehouse.component_list set batches = '';"
+    sql = "update tasly_warehouse.batch_order_relation set pid = '';"
     db.insert(sql)
     db.close()
 
-
-def insert_component_list_batches(dbconfig):
+'''
+def insert_batch_order_relation_pid(dbconfig):
     try:
         db = MySQL(dbconfig)
-        sql = "select id,batch from component_list where order_num != '' and batch != '';"
-        db.query(sql)
-        batch_id_info = db.fetchAllRows()
-        db.close()
-
-        for component_list_id, batch in batch_id_info:
-            #print(component_list_id, batch)
-            db_batch_order_relation = MySQL(dbconfig)
-            sql_get_batches = "select batches from batch_order_relation where batch = '{batch}' and movement_type in (101) and order_num != '' and batches != '' order by posting_date limit 1;".format(
-                batch=batch)
-            #print(sql_get_batches)
-            db_batch_order_relation.query(sql_get_batches)
-            batches_info = db_batch_order_relation.fetchAllRows()
-            #print(batches_info)
-            db_batch_order_relation.close()
-
-            if batches_info != ():
-                #print(batches_info[0])
-                batches = batches_info[0][0]
-
-                db_component_list = MySQL(dbconfig)
-                sql_update_batches = "update component_list set batches = '{batches}' where id = {component_list_id};". \
-                    format(batches=batches, component_list_id=component_list_id)
-                #print(sql_update_batches)
-                db_component_list.update(sql_update_batches)
-                db_component_list.close()
-
-    except Exception as e:
-        print(e)
-
-
-def flush_component_list_pid(dbconfig):
-    db = MySQL(dbconfig)
-    sql = "update tasly_warehouse.component_list set pid = '';"
-    db.insert(sql)
-    db.close()
-
-def insert_component_list_pid(dbconfig):
-    try:
-        db = MySQL(dbconfig)
-        sql = "select id from component_list where order_num != '' and batch != '';"
+        sql = "select id from batch_order_relation where order_num != '' and batch != '' and movement_type in (261);"
         db.query(sql)
         component_list_id_info = db.fetchAllRows()
         db.close()
@@ -118,7 +76,7 @@ def insert_component_list_pid(dbconfig):
         for component_list_id in component_list_id_info:
             #print(component_list_id[0])
             db_component_list = MySQL(dbconfig)
-            sql_get_batches = "select id from component_list where batches like '%{component_list_id}%' and batch != '';".format(component_list_id=component_list_id[0])
+            sql_get_batches = "select id from batch_order_relation where (relation_batches like '%,{component_list_id},%' or relation_batches like '{component_list_id},%' or relation_batches like '%,{component_list_id}') and batch != '' and movement_type in (101);".format(component_list_id=component_list_id[0])
             db_component_list.query(sql_get_batches)
             component_list_pid_info = db_component_list.fetchAllRows()
             db_component_list.close()
@@ -137,19 +95,69 @@ def insert_component_list_pid(dbconfig):
                 #print('YYYYY')
 
                 db_component_list = MySQL(dbconfig)
-                sql_update_batches = "update component_list set pid = '{component_list_pid_result}' where id = {component_list_id};". \
+                sql_update_batches = "update batch_order_relation set pid = '{component_list_pid_result}' where id = {component_list_id};". \
                     format(component_list_pid_result=component_list_pid_result, component_list_id=component_list_id[0])
                 #print(sql_update_batches)
                 db_component_list.update(sql_update_batches)
                 db_component_list.close()
 
+    except Exception as e:
+        print(e)
+'''
 
+def insert_batch_order_relation_pid(dbconfig):
+    try:
+        db = MySQL(dbconfig)
+        sql = "select id from batch_order_relation where order_num != '' and batch != '' and movement_type in (261);"
+        db.query(sql)
+        component_list_id_info = db.fetchAllRows()
+        db.close()
 
+        for component_list_id in component_list_id_info:
+            #print(component_list_id[0])
+            db_component_list = MySQL(dbconfig)
+            sql_get_batch_101 = "select batch from batch_order_relation where (relation_batches like '%,{component_list_id},%' or relation_batches like '{component_list_id},%' or relation_batches like '%,{component_list_id}') and batch != '' and movement_type in (101);".format(component_list_id=component_list_id[0])
+            db_component_list.query(sql_get_batch_101)
+            component_list_batch_info_101 = db_component_list.fetchAllRows()
+            db_component_list.close()
 
+            if component_list_batch_info_101 != ():
+
+                #print('XXXXX')
+                #print(component_list_pid_info)
+                #print('XXXXX')
+                batches_list = []
+                for component_list_batch_101 in component_list_batch_info_101:
+                    db_component_list = MySQL(dbconfig)
+                    sql_get_batch_261 = "select id from batch_order_relation where batch = '{component_list_batch_101}' and movement_type in (261) order by posting_date desc;".format(
+                        component_list_batch_101=component_list_batch_101[0])
+                    db_component_list.query(sql_get_batch_261)
+                    component_list_batch_id_info_261 = db_component_list.fetchOneRow()
+                    print('XXXXXX')
+                    print(component_list_batch_id_info_261)
+                    print('XXXXXXX')
+                    db_component_list.close()
+                    if component_list_batch_id_info_261 is not None:
+                        for component_list_batch_id_261 in component_list_batch_id_info_261:
+                            print('component_list_batch_id_info_261')
+                            print(component_list_batch_id_info_261)
+                            print('component_list_batch_id_info_261')
+                            batches_list.append(str(component_list_batch_id_261))
+
+                component_list_pid_result = ','.join(batches_list)
+                print('YYYYY')
+                print(component_list_pid_result)
+                print('YYYYY')
+
+                db_component_list = MySQL(dbconfig)
+                sql_update_batches = "update batch_order_relation set pid = '{component_list_pid_result}' where id = {component_list_id};". \
+                    format(component_list_pid_result=component_list_pid_result, component_list_id=component_list_id[0])
+                #print(sql_update_batches)
+                db_component_list.update(sql_update_batches)
+                db_component_list.close()
 
     except Exception as e:
         print(e)
-
 
 
 if __name__ == '__main__':
@@ -160,14 +168,10 @@ if __name__ == '__main__':
                 'db': config.get('META', 'db'),
                 'charset': 'utf8'}
 
-    flush_batch_order_relation_batches(dbconfig)
+    flush_batch_order_relation_relationbatches(dbconfig)
 
-    insert_batch_order_relation_batches(dbconfig)
+    insert_batch_order_relation_relationbatches(dbconfig)
 
-    flush_component_list_batches(dbconfig)
+    flush_batch_order_relation_pid(dbconfig)
 
-    insert_component_list_batches(dbconfig)
-
-    flush_component_list_pid(dbconfig)
-
-    insert_component_list_pid(dbconfig)
+    insert_batch_order_relation_pid(dbconfig)

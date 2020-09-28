@@ -137,7 +137,7 @@ def insert_batch_order_relation(dbconfig, material, material_description, user_n
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
-        address = file_address + 'batch_order_relation.xls'
+        address = file_address + 'batch_order_relation.xls_old'
         print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)

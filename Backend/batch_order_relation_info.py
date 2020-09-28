@@ -119,14 +119,14 @@ def Preservative_date(datestr_col):
 
 def flush_batch_order_relation(dbconfig):
     db = MySQL(dbconfig)
-    sql = "delete from tasly_warehouse.batch_order_relation"
+    sql = "delete from tasly_warehouse.batch_order_relation_new"
     db.insert(sql)
     db.close()
 
 def insert_batch_order_relation(dbconfig, material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_u_e, amount, document_date):
     db = MySQL(dbconfig)
 
-    sql = "INSERT INTO tasly_warehouse.batch_order_relation (material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_u_e, amount, document_date) " \
+    sql = "INSERT INTO tasly_warehouse.batch_order_relation_new (material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_u_e, amount, document_date) " \
           "VALUES ('{material}','{material_description}','{user_name}','{plant}','{storage_location}','{item}','{movement_type}','{batch}','{order_num}','{vendor}',{posting_date},'{material_document}','{purchase_order}',{quantity},{qty_u_e},{amount},{document_date});".\
         format(material=material, material_description=material_description, user_name=user_name, plant=plant, storage_location=storage_location,item=item, movement_type=movement_type, batch=batch, order_num=order_num, vendor=vendor, posting_date=posting_date, material_document=material_document, purchase_order=purchase_order, quantity=quantity, qty_u_e=qty_u_e, amount=amount, document_date=document_date)
     print(sql)
@@ -137,7 +137,7 @@ def insert_batch_order_relation(dbconfig, material, material_description, user_n
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
-        address = file_address + 'batch_order_relation.xls'
+        address = file_address + 'batch_order_relation_new.xls'
         print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)
