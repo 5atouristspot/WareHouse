@@ -96,22 +96,22 @@
             </div>
             <div class="query-result-div" style="margin-top: 10px;">
               <div v-for="tableItem in tableData2">
+                <div class="table-tips">成品信息</div>
                 <el-table
-                  :data="tableItem.list"
-                  style="width: 100%"
+                  :data="tableItem.finish_product_info"
+                  style="width: 100%;"
                   row-key="id"
-                  border
-                  default-expand-all
-                  :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+                  header-row-class-name="tableHeaderClass"
+                  border>
                   <el-table-column
                     prop="id"
                     label="id"
-                    width="180">
+                    width="160">
                   </el-table-column>
                   <el-table-column
                     prop="material"
                     label="material"
-                    width="130">
+                    width="120">
                   </el-table-column>
                   <el-table-column
                     prop="material_description"
@@ -120,7 +120,7 @@
                   <el-table-column
                     prop="order_num"
                     label="order_num"
-                    width="130">
+                    width="120">
                   </el-table-column>
                   <el-table-column
                     prop="batch"
@@ -135,17 +135,91 @@
                   <el-table-column
                     prop="unit"
                     label="unit"
+                    width="90">
+                  </el-table-column>
+                  <el-table-column
+                    prop="creating_date"
+                    label="creating_date"
                     width="130">
                   </el-table-column>
-                  <!--<el-table-column
-                    prop="pid"
-                    label="pid"
-                    width="120">
-                  </el-table-column>-->
+                  <el-table-column
+                    prop="consuming_date"
+                    label="consuming_date"
+                    width="150">
+                  </el-table-column>
+                  <el-table-column
+                    prop="gaining_date"
+                    label="gaining_date"
+                    width="130">
+                  </el-table-column>
                   <el-table-column
                     prop="posting_date"
                     label="posting_date"
+                    width="130">
+                  </el-table-column>
+                </el-table>
+                <div class="table-tips">组成物料</div>
+                <el-table
+                  :data="tableItem.list"
+                  style="width: 100%; margin-bottom: 30px;"
+                  row-key="id"
+                  border
+                  default-expand-all
+                  header-row-class-name="tableHeaderClass"
+                  :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+                  <el-table-column
+                    prop="id"
+                    label="id"
+                    width="160">
+                  </el-table-column>
+                  <el-table-column
+                    prop="material"
+                    label="material"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="material_description"
+                    label="material_description">
+                  </el-table-column>
+                  <el-table-column
+                    prop="order_num"
+                    label="order_num"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="batch"
+                    label="batch"
+                    width="130">
+                  </el-table-column>
+                  <el-table-column
+                    prop="quantity_wi"
+                    label="quantity_wi"
+                    width="130">
+                  </el-table-column>
+                  <el-table-column
+                    prop="unit"
+                    label="unit"
+                    width="90">
+                  </el-table-column>
+                  <el-table-column
+                    prop="creating_date"
+                    label="creating_date"
+                    width="130">
+                  </el-table-column>
+                  <el-table-column
+                    prop="consuming_date"
+                    label="consuming_date"
                     width="150">
+                  </el-table-column>
+                  <el-table-column
+                    prop="gaining_date"
+                    label="gaining_date"
+                    width="130">
+                  </el-table-column>
+                  <el-table-column
+                    prop="posting_date"
+                    label="posting_date"
+                    width="130">
                   </el-table-column>
                 </el-table>
                 <br>
@@ -244,10 +318,20 @@
           let data = res.data
           if (data && data.length > 0) {
             this.tableData2 = data
+            for (let i = 0; i < this.tableData2.length; i++) {
+              let finishProductInfo = this.tableData2[i].finish_product_info;
+              this.tableData2[i].finish_product_info = [finishProductInfo];
+            }
           }
         })
         // 临时假数据
-        this.tableData2 = [{"order_num":"101563","list":[{"id":158825,"material":"60010","material_description":"Silibinin Capsules 35mg","order_num":"101563","batch":"600903050","quantity_wi":975181.0,"unit":"EA","pid":0,"posting_date":"2016-08-22","children":[{"id":157823,"material":"10001","material_description":"silibinin","order_num":"101503","batch":"15000383","quantity_wi":35.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157825,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"15000354","quantity_wi":0.39,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157826,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"16000033","quantity_wi":64.61,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157828,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":480.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157830,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":20.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157832,"material":"20033","material_description":"Lactose (SpheroLac 100)","order_num":"101503","batch":"15000369","quantity_wi":106.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157834,"material":"20034","material_description":"Talc Powder","order_num":"101503","batch":"16000036","quantity_wi":31.46,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157836,"material":"20029","material_description":"Glycolys STD","order_num":"101503","batch":"16000006","quantity_wi":20.6,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157838,"material":"20036","material_description":"Silibinin printing 1#vacant capsules","order_num":"101503","batch":"15000366","quantity_wi":975395.0,"unit":"EA","pid":158825,"posting_date":"2016-05-09"}]},{"id":158827,"material":"30010","material_description":"PVC/PVDC Colorless 231mm","order_num":"101563","batch":"16000038","quantity_wi":175.2,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":158829,"material":"30011","material_description":"AluminumFoil231mm SilibininCapsules 35mg","order_num":"101563","batch":"16000026","quantity_wi":29.65,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":158831,"material":"30012","material_description":"Tropical Type Blister AluminumFoil 231mm","order_num":"101563","batch":"16000027","quantity_wi":96.91,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":158833,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000025","quantity_wi":3244.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158834,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000044","quantity_wi":45495.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158836,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000068","quantity_wi":30509.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158837,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000085","quantity_wi":18226.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158839,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000013","quantity_wi":7.33,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":158840,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000018","quantity_wi":8.36,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":158842,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000060","quantity_wi":8.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158843,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000069","quantity_wi":157.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":158845,"material":"40021","material_description":"Silibinin Capsules35mg*2*10EA Paperboard","order_num":"101563","batch":"16000061","quantity_wi":336.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"}]},{"order_num":"101632","list":[{"id":159935,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101632","batch":"16000106","quantity_wi":32900.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159937,"material":"40022","material_description":"Silibinin Capsules35mg*3*10EA Carton","order_num":"101632","batch":"16000110","quantity_wi":32655.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159939,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101632","batch":"16000075","quantity_wi":13.09,"unit":"KG","pid":0,"posting_date":"2016-08-22"},{"id":159941,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000093","quantity_wi":114.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159942,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000119","quantity_wi":50.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159944,"material":"40024","material_description":"Silibinin Capsules35mg*3*10EA Paperboard","order_num":"101632","batch":"16000094","quantity_wi":330.0,"unit":"EA","pid":0,"posting_date":"2016-08-22"},{"id":159945,"material":"70008","material_description":"Silibinin Capsules 35mg*2*10EA","order_num":"101632","batch":"650605018","quantity_wi":972700.0,"unit":"EA","pid":0,"posting_date":"2016-08-22","children":[{"id":158825,"material":"60010","material_description":"Silibinin Capsules 35mg","order_num":"101563","batch":"600903050","quantity_wi":975181.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22","children":[{"id":157823,"material":"10001","material_description":"silibinin","order_num":"101503","batch":"15000383","quantity_wi":35.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157825,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"15000354","quantity_wi":0.39,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157826,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"16000033","quantity_wi":64.61,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157828,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":480.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157830,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":20.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157832,"material":"20033","material_description":"Lactose (SpheroLac 100)","order_num":"101503","batch":"15000369","quantity_wi":106.0,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157834,"material":"20034","material_description":"Talc Powder","order_num":"101503","batch":"16000036","quantity_wi":31.46,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157836,"material":"20029","material_description":"Glycolys STD","order_num":"101503","batch":"16000006","quantity_wi":20.6,"unit":"KG","pid":158825,"posting_date":"2016-05-09"},{"id":157838,"material":"20036","material_description":"Silibinin printing 1#vacant capsules","order_num":"101503","batch":"15000366","quantity_wi":975395.0,"unit":"EA","pid":158825,"posting_date":"2016-05-09"}]},{"id":158827,"material":"30010","material_description":"PVC/PVDC Colorless 231mm","order_num":"101563","batch":"16000038","quantity_wi":175.2,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158829,"material":"30011","material_description":"AluminumFoil231mm SilibininCapsules 35mg","order_num":"101563","batch":"16000026","quantity_wi":29.65,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158831,"material":"30012","material_description":"Tropical Type Blister AluminumFoil 231mm","order_num":"101563","batch":"16000027","quantity_wi":96.91,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158833,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000025","quantity_wi":3244.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158834,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000044","quantity_wi":45495.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158836,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000068","quantity_wi":30509.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158837,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000085","quantity_wi":18226.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158839,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000013","quantity_wi":7.33,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158840,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000018","quantity_wi":8.36,"unit":"KG","pid":159945,"posting_date":"2016-08-22"},{"id":158842,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000060","quantity_wi":8.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158843,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000069","quantity_wi":157.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"},{"id":158845,"material":"40021","material_description":"Silibinin Capsules35mg*2*10EA Paperboard","order_num":"101563","batch":"16000061","quantity_wi":336.0,"unit":"EA","pid":159945,"posting_date":"2016-08-22"}]}]}];
+        /*this.tableData2 = [{"order_num":"101563","finish_product_info":{"id":24680,"material":"70008","material_description":"Silibinin Capsules 35mg*2*10EA","order_num":"101563","batch":"650605018","quantity_wi":972700,"unit":"EA","creating_date":"2016-05-09","consuming_date":"","gaining_date":"","pasting_date":"2016-05-16"},"list":[{"id":24645,"material":"30010","material_description":"PVC/PVDC Colorless 231mm","order_num":"101563","batch":"16000038","quantity_wi":175,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24647,"material":"30011","material_description":"AluminumFoil231mm SilibininCapsules 35mg","order_num":"101563","batch":"16000026","quantity_wi":29,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24652,"material":"30012","material_description":"Tropical Type Blister AluminumFoil 231mm","order_num":"101563","batch":"16000027","quantity_wi":96,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24654,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000018","quantity_wi":8,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24656,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101563","batch":"16000013","quantity_wi":7,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24657,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000044","quantity_wi":45495,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24658,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101563","batch":"16000025","quantity_wi":3244,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24662,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000085","quantity_wi":18226,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24663,"material":"40019","material_description":"Silibinin Capsules 35mg*2*10EA Carton","order_num":"101563","batch":"16000068","quantity_wi":30509,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24665,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000060","quantity_wi":8,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24666,"material":"40020","material_description":"Silibinin Capsules 35mg*2*10EA Shipper","order_num":"101563","batch":"16000069","quantity_wi":157,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24671,"material":"40021","material_description":"Silibinin Capsules35mg*2*10EA Paperboard","order_num":"101563","batch":"16000061","quantity_wi":336,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":""},{"id":24676,"material":"60010","material_description":"Silibinin Capsules 35mg","order_num":"101563","batch":"600903050","quantity_wi":975181,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-05-09","gaining_date":"","pasting_date":"","children":[{"id":23841,"material":"10001","material_description":"silibinin","order_num":"101503","batch":"15000383","quantity_wi":35,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":23850,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"15000354","quantity_wi":0,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":23851,"material":"20028","material_description":"Soya Lecithin","order_num":"101503","batch":"16000033","quantity_wi":64,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":23862,"material":"20029","material_description":"Glycolys STD","order_num":"101503","batch":"16000006","quantity_wi":20,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":23870,"material":"20033","material_description":"Lactose (SpheroLac 100)","order_num":"101503","batch":"15000369","quantity_wi":106,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":23877,"material":"20034","material_description":"Talc Powder","order_num":"101503","batch":"16000036","quantity_wi":31,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-03-30","gaining_date":"","pasting_date":""},{"id":24116,"material":"20035","material_description":"Anhydrous Ethanol","order_num":"101503","batch":"16000029","quantity_wi":20,"unit":"KG","pid":24676,"creating_date":"","consuming_date":"2016-04-18","gaining_date":"","pasting_date":""},{"id":24123,"material":"20036","material_description":"Silibinin printing 1#vacant capsules","order_num":"101503","batch":"15000366","quantity_wi":975395,"unit":"EA","pid":24676,"creating_date":"","consuming_date":"2016-04-18","gaining_date":"","pasting_date":""}]}]},{"order_num":"101632","finish_product_info":{"id":25749,"material":"70009","material_description":"Silibinin Capsules 35mg*3*10EA","order_num":"101632","batch":"650605018","quantity_wi":969450,"unit":"EA","creating_date":"2016-08-18","consuming_date":"","gaining_date":"","pasting_date":"2016-08-22"},"list":[{"id":25735,"material":"40010","material_description":"BOPP Film 178mm","order_num":"101632","batch":"16000075","quantity_wi":13,"unit":"KG","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25737,"material":"40018","material_description":"Silibinin Capsules Leaflet","order_num":"101632","batch":"16000106","quantity_wi":32900,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25740,"material":"40022","material_description":"Silibinin Capsules35mg*3*10EA Carton","order_num":"101632","batch":"16000110","quantity_wi":32655,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25741,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000119","quantity_wi":50,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25742,"material":"40023","material_description":"Silibinin Capsules 35mg*3*10EA Shipper","order_num":"101632","batch":"16000093","quantity_wi":114,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25745,"material":"40024","material_description":"Silibinin Capsules35mg*3*10EA Paperboard","order_num":"101632","batch":"16000094","quantity_wi":330,"unit":"EA","pid":0,"creating_date":"","consuming_date":"2016-08-18","gaining_date":"","pasting_date":""},{"id":25746,"material":"70008","material_description":"Silibinin Capsules 35mg*2*10EA","order_num":"101632","batch":"650605018","quantity_wi":972700,"unit":"EA","pid":0,"creating_date":"2016-08-18","consuming_date":"2016-08-18","gaining_date":"","pasting_date":"2016-08-22"}]}];
+
+        for (let i = 0; i < this.tableData2.length; i++) {
+          let finishProductInfo = this.tableData2[i].finish_product_info
+          this.tableData2[i].finish_product_info = [finishProductInfo]
+        }*/
+
       }
     },
     components: {
@@ -371,5 +455,11 @@
   .query-result-div .el-table {
     color: black;
   }
-
+  .tableHeaderClass th {
+    background-color: #EEE;
+  }
+  .table-tips {
+    font-size: 16px;
+    font-weight: 600;
+  }
 </style>
