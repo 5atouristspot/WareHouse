@@ -22,6 +22,8 @@ from . import batchdetail_info
 
 from . import search_info
 
+from . import material_trace_old
+
 from . import material_trace
 
 __all__ = ['']
