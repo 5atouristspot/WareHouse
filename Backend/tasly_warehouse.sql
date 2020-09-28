@@ -19,31 +19,31 @@
 --
 -- 物料追溯相关表
 --
-
 CREATE TABLE `batch_order_relation` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `material` varchar(255) NOT NULL DEFAULT '' COMMENT '物料号',
   `material_description` varchar(255) NOT NULL DEFAULT '' COMMENT '物料描述',
   `user_name` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
   `plant` varchar(255) NOT NULL DEFAULT '' COMMENT '设备',
-  `stroage_location` varchar(255) NOT NULL DEFAULT '' COMMENT '存储位置',
-  `item` varchar(255) NOT NULL DEFAULT '' COMMENT '',
-  `movement_type` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `storage_location` varchar(255) NOT NULL DEFAULT '' COMMENT '存储位置',
+  `item` varchar(255) NOT NULL DEFAULT '',
+  `movement_type` varchar(255) NOT NULL DEFAULT '',
   `batch` varchar(255) NOT NULL DEFAULT '' COMMENT '批号',
-  `order` varchar(255) NOT NULL DEFAULT '' COMMENT '订单号',
-  `vendor` varchar(255) NOT NULL DEFAULT '' COMMENT '',
+  `order_num` varchar(255) NOT NULL DEFAULT '' COMMENT '订单号',
+  `vendor` varchar(255) NOT NULL DEFAULT '',
   `posting_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '放入时间',
-  `material_document` varchar(255) NOT NULL DEFAULT '' COMMENT '',
-  `purchase_order` varchar(255) NOT NULL DEFAULT '' COMMENT '',
-  `quantity` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT '数量',
-  `qty_u_e` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT 'Qty in Un. of Entry',
-  `amount` DOUBLE(12,3) NOT NULL DEFAULT '0' COMMENT 'Amount in LC',
+  `material_document` varchar(255) NOT NULL DEFAULT '',
+  `purchase_order` varchar(255) NOT NULL DEFAULT '',
+  `quantity` double(12,3) NOT NULL DEFAULT '0.000' COMMENT '数量',
+  `qty_u_e` double(12,3) NOT NULL DEFAULT '0.000' COMMENT 'Qty in Un. of Entry',
+  `amount` double(12,3) NOT NULL DEFAULT '0.000' COMMENT 'Amount in LC',
   `document_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '归档时间',
   `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  `pid` varchar(255) NOT NULL DEFAULT '' COMMENT '通过batch_order_relation.batches找到该列的上级，并把对应的batch_order_relation.id填入',
   `batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级batch号,用逗号隔开',
+  `relation_batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级batch号,都是batch_order_relation表的id,用逗号隔开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品批号　与　生成产品的订单的关系';
-
 
 
 CREATE TABLE `component_list` (
