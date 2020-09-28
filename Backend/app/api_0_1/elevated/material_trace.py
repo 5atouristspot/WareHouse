@@ -32,9 +32,9 @@ from Backend.app.views import auth
 __all__ = ['materialtrace']
 __author__ = 'zhihao'
 
-@api.route('/materialtrace_new', methods=['GET', 'POST'])
+@api.route('/materialtrace', methods=['GET', 'POST'])
 @auth.login_required
-def materialtrace_new():
+def materialtrace():
     batch = request.args.get('batch', type=str, default="")
 
     try:
