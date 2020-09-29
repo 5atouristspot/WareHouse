@@ -61,8 +61,13 @@ def materialtrace():
             relation_id = batch_order_num_id[2]
             relation_batches = batch_order_num_id[3]
 
-            #成品信息
-            finish_product_info = get_finish_product_info(dbconfig, order_num, batch, relation_id)
+            if is_finish_product(dbconfig, batch, relation_batches):
+                #成品信息
+                finish_product_info = get_finish_product_info(dbconfig, order_num, batch, relation_id)
+            else:
+                finish_product_info = dict(id='', material='', material_description='', order_num='',
+                         batch='', quantity_wi='', unit='', creating_date='',
+                         consuming_date='', gaining_date='', pasting_date='')
             # 组成物料的信息
             tree_node_info = get_tree_first_level_node_info(dbconfig, batch, relation_batches, box)
             #logger.info(tree_node_info)
@@ -92,6 +97,40 @@ def materialtrace():
                     "[Errorcode]:{e}".format(e=e, host=config.get('META', 'host'), port=int(config.get('META', 'port')))
 
         logger.error(error_msg)
+
+
+def is_finish_product(dbconfig, batch, relation_batches):
+    db = MySQL(dbconfig)
+    # 如果101的信息　同时又　包含261的信息　那么它就不是成品信息;除非它的下级中的batch有和它相同的，那么它就是半成品　，要显示成品信息
+    sql_is_finish_product = "select batch,order_num,id,relation_batches from batch_order_relation where movement_type in (261) and batch = '{batch}' ;". \
+        format(batch=batch)
+    logger.info(sql_is_finish_product)
+    db.query(sql_is_finish_product)
+    finish_product_261_info = db.fetchAllRows()
+    logger.info(finish_product_261_info)
+    db.close()
+
+    #半成品
+    db = MySQL(dbconfig)
+    sql_sub_batch = "select batch from batch_order_relation where id in ({relation_batches}) ;". \
+        format(relation_batches=relation_batches)
+    #logger.info(sql_sub_batch)
+    db.query(sql_sub_batch)
+    sub_batch_info = db.fetchAllRows()
+    #logger.info(sub_batch_info)
+    db.close()
+    sub_batch_list = []
+    for sub_batch in sub_batch_info:
+        sub_batch_item = sub_batch[0]
+        sub_batch_list.append(sub_batch_item)
+
+    if finish_product_261_info == ():
+        return True
+    else:
+        if batch in sub_batch_list:
+            return True
+        else:
+            return False
 
 
 def get_finish_product_info(dbconfig, order_num, batch, relation_id):
@@ -201,9 +240,9 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
             #如果不再包含下级组件　则展示　　生成时间='',　消耗时间,物料收货时间,放行时间; 若包含下级组件则展示　生成时间,消耗时间,物料收货时间='', 放行时间
 
             batch_sub = detail[4]
-            logger.info(batch_sub)
+            #logger.info(batch_sub)
             order_num = detail[3]
-            logger.info(order_num)
+            #logger.info(order_num)
 
             #TODO:这个地方找的不对用１０１重新找！！！！！！
             #sql_relation_batches = "select relation_batches from batch_order_relation where batch = '{batch_sub}' and order_num = '{order_num}' and movement_type in (101) order by posting_date desc limit 1;". \
