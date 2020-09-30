@@ -6,6 +6,7 @@ import plan from '@/pages/plan'
 import batch from '@/pages/batch'
 import detail from '@/pages/detail'
 import search from '@/pages/search'
+import supplier from '@/pages/supplier'
 import warehouse from '@/pages/warehouse'
 import HelloWorld from '@/components/HelloWorld'
 import SearchInfo from '@/components/SearchInfo'
@@ -62,5 +63,10 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: search
+    },
+    {
+      path: '/supplier',
+      name: 'supplier',
+      component: supplier
     }]
 })
