@@ -26,5 +26,7 @@ from . import search_info
 
 from . import material_trace
 
+from . import supplier_management
+
 __all__ = ['']
 __author__ = 'zhihao'
