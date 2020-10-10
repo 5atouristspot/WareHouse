@@ -101,7 +101,7 @@
                   :data="tableItem.finish_product_info"
                   style="width: 100%;"
                   row-key="id"
-                  header-row-class-name="tableHeaderClass"
+                  header-row-class-name="tableHeaderClass_cp"
                   border>
                   <el-table-column
                     prop="id"
@@ -457,6 +457,9 @@
   }
   .tableHeaderClass th {
     background-color: #EEE;
+  }
+  .tableHeaderClass_cp th {
+    background-color: #B0E0E6;
   }
   .table-tips {
     font-size: 16px;
