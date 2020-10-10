@@ -88,7 +88,7 @@ def Preservative_float(base_info):
 
 def flush_batch_order_relation(dbconfig):
     db = MySQL(dbconfig)
-    sql = "delete from tasly_warehouse.supplier_stock_management"
+    sql = "truncate table tasly_warehouse.supplier_stock_management"
     db.insert(sql)
     db.close()
 

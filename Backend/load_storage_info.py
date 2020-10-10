@@ -97,7 +97,7 @@ def Preservative_date(datestr_col):
 
 def flush_tasly_warehouse_storage_info(dbconfig):
     db = MySQL(dbconfig)
-    sql = "delete from tasly_warehouse.tasly_warehouse_storage_info"
+    sql = "truncate table tasly_warehouse.tasly_warehouse_storage_info"
     db.insert(sql)
     db.close()
 

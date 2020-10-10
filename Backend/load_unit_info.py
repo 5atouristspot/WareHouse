@@ -38,7 +38,7 @@ def Preservative_str(base_info):
 
 def flush_unit_info(dbconfig):
     db = MySQL(dbconfig)
-    sql = "delete from tasly_warehouse.unit_info"
+    sql = "truncate table tasly_warehouse.unit_info"
     db.insert(sql)
     db.close()
 

@@ -133,9 +133,9 @@ def insert_batch_order_relation_pid(dbconfig):
                         component_list_batch_101=component_list_batch_101[0])
                     db_component_list.query(sql_get_batch_261)
                     component_list_batch_id_info_261 = db_component_list.fetchOneRow()
-                    print('XXXXXX')
-                    print(component_list_batch_id_info_261)
-                    print('XXXXXXX')
+                    #print('XXXXXX')
+                    #print(component_list_batch_id_info_261)
+                    #print('XXXXXXX')
                     db_component_list.close()
                     if component_list_batch_id_info_261 is not None:
                         for component_list_batch_id_261 in component_list_batch_id_info_261:
@@ -145,9 +145,9 @@ def insert_batch_order_relation_pid(dbconfig):
                             batches_list.append(str(component_list_batch_id_261))
 
                 component_list_pid_result = ','.join(batches_list)
-                print('YYYYY')
-                print(component_list_pid_result)
-                print('YYYYY')
+                #print('YYYYY')
+                #print(component_list_pid_result)
+                #print('YYYYY')
 
                 db_component_list = MySQL(dbconfig)
                 sql_update_batches = "update batch_order_relation set pid = '{component_list_pid_result}' where id = {component_list_id};". \

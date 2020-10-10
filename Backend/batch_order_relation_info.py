@@ -119,7 +119,7 @@ def Preservative_date(datestr_col):
 
 def flush_batch_order_relation(dbconfig):
     db = MySQL(dbconfig)
-    sql = "delete from tasly_warehouse.batch_order_relation"
+    sql = "truncate table tasly_warehouse.batch_order_relation"
     db.insert(sql)
     db.close()
 
