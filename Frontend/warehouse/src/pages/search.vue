@@ -456,13 +456,14 @@
     color: black;
   }
   .tableHeaderClass th {
-    background-color: #EEE;
+    background-color: #EEE !important;
   }
   .tableHeaderClass_cp th {
-    background-color: #B0E0E6;
+    background-color: #B0E0E6 !important;
   }
   .table-tips {
     font-size: 16px;
     font-weight: 600;
+    text-align: left;
   }
 </style>
