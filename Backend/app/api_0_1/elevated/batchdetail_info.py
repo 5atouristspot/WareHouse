@@ -79,6 +79,8 @@ def batchdetail():
             storage_bin = 'API-成品'
         elif batch_type == 3:
             storage_bin = 'CF CABINET'
+        elif batch_type == 4:
+            storage_bin = 'VENDOR'
 
         sql = "select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = '{storage_bin}' and batch = '{batchnum}';".format(storage_bin=storage_bin, batchnum=batchnum)
         db = MySQL(dbconfig)

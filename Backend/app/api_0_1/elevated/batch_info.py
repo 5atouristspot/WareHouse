@@ -137,6 +137,31 @@ def batch():
             resp.headers['Access-Control-Allow-Origin'] = '*'
             resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
             return resp
+        elif batch_type == 4:
+            #sql = "select a.storage_bin,a.batch,b.status from tasly_warehouse_storage_info a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where a.storage_bin = 'API-成品';"
+            sql = "select storage_bin,batch,status from tasly_warehouse_storage_info where storage_bin = 'VENDOR';"
+            db = MySQL(dbconfig)
+            db.query(sql)
+            storagebin_info = db.fetchAllRows()
+            # print storagebin_info
+            db.close()
+            bin_list = []
+            for bin_number in storagebin_info:
+                sub_keys = ['name', 'batch','status']
+                # if bin_number[1] is None:
+                #    sub_values = [bin_number[0], '']
+                # else:
+                #    sub_values = [bin_number[0], bin_number[1]]
+                sub_values = [bin_number[0], bin_number[1], bin_number[2]]
+                detail_info = dict(zip(sub_keys, sub_values))
+                bin_list.append(detail_info)
+            # return jsonify(bin_list)
+
+            # print json.dumps(reload_info)
+            resp = Response(json.dumps(bin_list))
+            resp.headers['Access-Control-Allow-Origin'] = '*'
+            resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
+            return resp
 
     except Exception as e:
         error_msg = "[action]:get batch info " \
