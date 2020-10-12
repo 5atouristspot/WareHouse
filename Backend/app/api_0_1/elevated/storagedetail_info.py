@@ -59,6 +59,7 @@ def storagedetail():
     :return:
     '''
     binum = request.args.get('binum', type=str, default=None)
+    status = request.args.get('status', type=str, default=None)
     try:
         dbconfig = {'host': config.get('META', 'host'),
                     'port': int(config.get('META', 'port')),
@@ -67,7 +68,7 @@ def storagedetail():
                     'db': config.get('META', 'db'),
                     'charset': 'utf8'}
 
-        sql = "select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = '{binum}';".format(binum=binum)
+        sql = "select material,storage_bin,status,batch,avail_stock,unit,material_desc,last_goods_rec,date_of_manuf,sled_bbd,next_inspection from tasly_warehouse_storage_info where storage_bin = '{binum}' and status='{status}';".format(binum=binum, status=status)
         db = MySQL(dbconfig)
         db.query(sql)
         storagedetail_result = db.fetchAllRows()

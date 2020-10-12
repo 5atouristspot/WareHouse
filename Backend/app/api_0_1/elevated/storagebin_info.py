@@ -106,7 +106,7 @@ def storagebin():
             return resp
 
         else:
-            sql = "select a.storage_bin,b.status from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where warehouse_type = {warehouse_type};".format(warehouse_type=warehouse_type)
+            sql = "select distinct(a.storage_bin),b.status from tasly_warehouse_storage_bin a left join tasly_warehouse_storage_info b on a.storage_bin = b.storage_bin where warehouse_type = {warehouse_type};".format(warehouse_type=warehouse_type)
             db = MySQL(dbconfig)
             db.query(sql)
             storagebin_info = db.fetchAllRows()
