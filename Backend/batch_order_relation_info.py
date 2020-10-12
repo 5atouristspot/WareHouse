@@ -106,7 +106,7 @@ def Preservative_str(base_info):
 def Preservative_date(datestr_col):
     if table.cell(j, datestr_col).value != '':
         datestr = xlrd.xldate.xldate_as_datetime(table.cell(j, datestr_col).value, 0)
-        print (datestr)
+        #print (datestr)
         datestr = str(datestr).split(' ')[0]
         datestr = "'" + datestr + "'"
         # print datestr
@@ -154,7 +154,7 @@ for i in range(1, files_num + 1):
         flush_batch_order_relation(dbconfig)
 
         for j in range(1, rows):
-            print(str(table.cell(j, 0)))
+            #print(str(table.cell(j, 0)))
             if "text" not in str(table.cell(j, 0)):
                 continue
 
@@ -162,7 +162,7 @@ for i in range(1, files_num + 1):
             #print material
 
             material_description = Preservative_str(material_description_col)
-            print (material_description)
+            #print (material_description)
 
             user_name = Preservative_str(user_name_col)
             #print user_name
@@ -180,10 +180,10 @@ for i in range(1, files_num + 1):
             #print movement_type
 
             batch = Preservative_str(batch_col)
-            #print batch
+            #print (batch)
 
             order_num = Preservative_str(order_num_col)
-            #print order_num
+            #print (order_num)
 
             vendor = Preservative_str(vendor_col)
             #print vendor
@@ -197,13 +197,13 @@ for i in range(1, files_num + 1):
             purchase_order = Preservative_str(purchase_order_col)
             #print purchase_order
 
-            quantity = Preservative_float(quantity_col)
+            quantity = Preservative_str(quantity_col)
             #print quantity
 
-            qty_un_entry = Preservative_float(qty_u_e_col)
+            qty_un_entry = Preservative_str(qty_u_e_col)
             #print qty_un_entry
 
-            amount = Preservative_float(amount_col)
+            amount = Preservative_str(amount_col)
             #print amount
 
             document_date = Preservative_date(document_date_col)

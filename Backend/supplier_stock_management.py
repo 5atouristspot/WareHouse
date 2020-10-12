@@ -55,6 +55,17 @@ supplier_delivery_time_col = 11
 file_address = r'/data1/mycode/WareHouse/Backend/'
 
 
+def Preservative(base_info):
+    if table.cell(j, base_info).value != '':
+        str_info = str(table.cell(j, base_info).value)
+        if '.' in str(str_info):
+            res = str_info.split('.')[0]
+        else:
+            res = table.cell(j, base_info).value.encode('utf-8')
+    else:
+        res = ""
+    return res
+
 # 先判断是否为空；然后取出字符串型
 def Preservative_str(base_info):
     if table.cell(j, base_info).value != '':
@@ -67,7 +78,7 @@ def Preservative_str(base_info):
 def Preservative_date(datestr_col):
     if table.cell(j, datestr_col).value != '':
         datestr = xlrd.xldate.xldate_as_datetime(table.cell(j, datestr_col).value, 0)
-        print (datestr)
+        #print (datestr)
         datestr = str(datestr).split(' ')[0]
         datestr = "'" + datestr + "'"
         # print datestr
@@ -133,7 +144,7 @@ for i in range(1, files_num + 1):
             supply_type = Preservative_str(supply_type_col)
             #print (supply_type)
 
-            material = Preservative_str(material_col)
+            material = Preservative(material_col)
             # print (material)
 
             material_description = Preservative_str(material_description_col)
