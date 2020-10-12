@@ -34,17 +34,16 @@ CREATE TABLE `batch_order_relation` (
   `posting_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '放入时间',
   `material_document` varchar(255) NOT NULL DEFAULT '',
   `purchase_order` varchar(255) NOT NULL DEFAULT '',
-  `quantity` double(12,3) NOT NULL DEFAULT '0.000' COMMENT '数量',
-  `qty_u_e` double(12,3) NOT NULL DEFAULT '0.000' COMMENT 'Qty in Un. of Entry',
-  `amount` double(12,3) NOT NULL DEFAULT '0.000' COMMENT 'Amount in LC',
+  `quantity` varchar(255) NOT NULL DEFAULT '0.000' COMMENT '数量',
+  `qty_u_e` varchar(255) NOT NULL DEFAULT '0.000' COMMENT 'Qty in Un. of Entry',
+  `amount` varchar(255) NOT NULL DEFAULT '0.000' COMMENT 'Amount in LC',
   `document_date` varchar(20) NOT NULL DEFAULT '0.0' COMMENT '归档时间',
   `create_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
   `pid` varchar(255) NOT NULL DEFAULT '' COMMENT '通过batch_order_relation.batches找到该列的上级，并把对应的batch_order_relation.id填入',
   `batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级batch号,用逗号隔开',
   `relation_batches` varchar(255) NOT NULL DEFAULT '' COMMENT '所有子级batch号,都是batch_order_relation表的id,用逗号隔开',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品批号　与　生成产品的订单的关系';
-
+) ENGINE=InnoDB AUTO_INCREMENT=57897 DEFAULT CHARSET=utf8 COMMENT='产品批号　与　生成产品的订单的关系';
 
 CREATE TABLE `component_list` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
