@@ -180,7 +180,6 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
             #物料收获时间为空 gaining_date
             gaining_date = ''
 
-
             #放行时间 321的posting_date
             sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(batch=batch,order_num=order_num)
             #logger.info(sql_pasting_date)
@@ -293,18 +292,19 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     gaining_date = ''
 
-
+                logger.info('cccccccccccccccccccccc')
                 #放行时间 321的posting_date
                 sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
                     batch=batch_sub,order_num=order_num)
-                #logger.info(sql_pasting_date)
+                logger.info(sql_pasting_date)
                 db.query(sql_pasting_date)
                 pasting_date_info = db.fetchAllRows()
-
+                logger.info(pasting_date_info)
                 if pasting_date_info != ():
                     pasting_date = pasting_date_info[0][1]
                 else:
                     pasting_date = ''
+                logger.info(pasting_date)
 
             #包含下级组件
             else:
@@ -349,13 +349,12 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
                     pasting_date = ''
 
             db.close()
-
             #整合信息
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(int(detail[5])), unit=unit, pid=int(detail[7]),
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(float(detail[5])), unit=unit, pid=int(detail[7]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
-            #logger.info(line_info)
+            logger.info(line_info)
             box.append(line_info)
 
 
@@ -510,7 +509,7 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
             db.close()
 
             #整合信息
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(int(detail[5])), unit=unit, pid=int(detail[7]),
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(float(detail[5])), unit=unit, pid=int(detail[7]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
