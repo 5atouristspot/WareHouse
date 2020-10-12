@@ -186,18 +186,23 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
             #logger.info(sql_pasting_date)
             db.query(sql_pasting_date)
             pasting_date_info = db.fetchAllRows()
+            logger.info('pasting_date_info')
+            logger.info(pasting_date_info)
             if pasting_date_info != ():
                 pasting_date = pasting_date_info[0][1]
             else:
                 pasting_date = ''
-            #logger.info('pasting_date')
-            #logger.info(pasting_date)
+            logger.info('pasting_date')
+            logger.info(pasting_date)
 
             db.close()
 
             finish_product_info = dict(id=detail_info[0][0], material=detail_info[0][1], material_description=detail_info[0][2], order_num=detail_info[0][3],
                          batch=detail_info[0][4], quantity_wi=abs(int(detail_info[0][5])), unit=unit, creating_date=creating_date,
                          consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
+
+            logger.info('finish_product_info')
+            logger.info(finish_product_info)
         else:
                 finish_product_info = ()
 
