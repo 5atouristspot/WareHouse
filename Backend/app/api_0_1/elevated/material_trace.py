@@ -197,7 +197,7 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
             db.close()
 
             finish_product_info = dict(id=detail_info[0][0], material=detail_info[0][1], material_description=detail_info[0][2], order_num=detail_info[0][3],
-                         batch=detail_info[0][4], quantity_wi=abs(int(detail_info[0][5])), unit=unit, creating_date=creating_date,
+                         batch=detail_info[0][4], quantity_wi=abs(float(detail_info[0][5])), unit=unit, creating_date=creating_date,
                          consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
             logger.info('finish_product_info')
