@@ -20,6 +20,7 @@
         target: '',
         binum: '',
         type: '',
+        status: '',
         batchType: '',
         detailList: []
       }
@@ -28,6 +29,7 @@
       init() {
         this.type = this.$route.params.type
         this.binum = this.$route.params.binum
+        this.status = this.$route.params.status
         if (this.type === 'batch') {
           this.batchType = this.$route.params.batchType
           this.target = '/batch/' + this.batchType
@@ -51,7 +53,8 @@
           this.target = '/warehouse/' + this.type
 
           let reqParams = {
-            binum: this.binum
+            binum: this.binum,
+            status: this.status
           }
           this.$axios.defaults.auth = {
             username: localStorage.token,
