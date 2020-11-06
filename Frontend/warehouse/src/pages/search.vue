@@ -153,8 +153,8 @@
                     width="130">
                   </el-table-column>
                   <el-table-column
-                    prop="posting_date"
-                    label="posting_date"
+                    prop="pasting_date"
+                    label="pasting_date"
                     width="130">
                   </el-table-column>
                 </el-table>
@@ -217,8 +217,8 @@
                     width="130">
                   </el-table-column>
                   <el-table-column
-                    prop="posting_date"
-                    label="posting_date"
+                    prop="pasting_date"
+                    label="pasting_date"
                     width="130">
                   </el-table-column>
                 </el-table>
