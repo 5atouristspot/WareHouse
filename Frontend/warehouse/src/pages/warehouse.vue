@@ -36,7 +36,7 @@
           <el-col :span="4" v-for="(item, index) in storagebinList" :key="index" style="margin-bottom: 10px">
             <el-button class="storagebin-btn"
                        :class="btnClass(item.status)"
-                       @click="redirect(subItem.name, subItem.status)">
+                       @click="redirect(item.name, item.status)">
               {{item.name}}
             </el-button>
           </el-col>
