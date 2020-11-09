@@ -45,8 +45,7 @@
 
       },
       redirect(batchnum) {
-        console.log("batchnum:" + batchnum + ",batch_type:" + this.type)
-        this.$router.push(`/detail/batch/${batchnum}/${this.type}`)
+        this.$router.push(`/detail/batch/${batchnum}/status/${this.type}`)
       },
       btnClass(status) {
         let btnClazz = 'white-btn'
