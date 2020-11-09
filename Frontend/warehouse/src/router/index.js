@@ -56,7 +56,7 @@ export default new Router({
       name: 'batch',
       component: batch
     }, {
-      path: '/detail/:type/:binum/:batchType',
+      path: '/detail/:type/:binum/:status/:batchType',
       name: 'detail',
       component: detail
     }, {
