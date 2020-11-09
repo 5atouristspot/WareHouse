@@ -119,8 +119,8 @@
         }*/
       },
       redirect(binum, status) {
-        if (!status || status == '') {
-          status = null
+        if (status == '') {
+          status = 'empty'
         }
         this.$router.push(`/detail/${this.type}/${binum}/${status}/warehouse`)
       },
