@@ -29,6 +29,8 @@ config.read(colConfig)
 
 from Backend.app.views import auth
 
+from decimal import Decimal
+
 __all__ = ['materialtrace']
 __author__ = 'zhihao'
 
@@ -195,9 +197,9 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
             logger.info(pasting_date)
 
             db.close()
-
+            quantity_wi = str(abs(Decimal(detail_info[0][5]).quantize(Decimal('0.000'))))
             finish_product_info = dict(id=detail_info[0][0], material=detail_info[0][1], material_description=detail_info[0][2], order_num=detail_info[0][3],
-                         batch=detail_info[0][4], quantity_wi=abs(float(detail_info[0][5])), unit=unit, creating_date=creating_date,
+                         batch=detail_info[0][4], quantity_wi=quantity_wi, unit=unit, creating_date=creating_date,
                          consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
             logger.info('finish_product_info')
@@ -281,8 +283,11 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
                     consuming_date = ''
 
                 #物料收获时间101 gaining_date
-                sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
-                    batch=batch_sub, order_num=order_num)
+                #sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
+                #    batch=batch_sub, order_num=order_num)
+                #从全部数据里取当前batch下movement_type=101的数据，对应的posting_date为物料收获时间
+                sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (101) group by order_num;".format(
+                    batch=batch_sub)
                 #logger.info(sql_gaining_date)
                 db.query(sql_gaining_date)
                 gaining_date_info = db.fetchAllRows()
@@ -292,25 +297,30 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     gaining_date = ''
 
-                logger.info('cccccccccccccccccccccc')
                 #放行时间 321的posting_date
-                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
-                    batch=batch_sub,order_num=order_num)
-                logger.info(sql_pasting_date)
+                #sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
+                #    batch=batch_sub,order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=321的数据，对应的posting_date为放行时间
+                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (321) group by order_num;".format(
+                    batch=batch_sub)
+                #logger.info(sql_pasting_date)
                 db.query(sql_pasting_date)
                 pasting_date_info = db.fetchAllRows()
-                logger.info(pasting_date_info)
+                #logger.info(pasting_date_info)
                 if pasting_date_info != ():
                     pasting_date = pasting_date_info[0][1]
                 else:
                     pasting_date = ''
-                logger.info(pasting_date)
+                #logger.info(pasting_date)
 
             #包含下级组件
             else:
                 #生成时间 101的posting_date
-                sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
-                    batch=batch_sub,order_num=order_num)
+                #sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
+                #    batch=batch_sub,order_num=order_num)
+                #从全部数据里取当前batch下movement_type=101的数据，对应的posting_date为生成时间
+                sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (101) group by order_num;".format(
+                    batch=batch_sub)
                 #logger.info(sql_creating_date)
                 db.query(sql_creating_date)
                 creating_date_info = db.fetchAllRows()
@@ -320,7 +330,7 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     creating_date = ''
 
-                #消耗时间为空	consuming_date
+                #消耗时间	consuming_date
                 sql_consuming_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (261) group by order_num;".format(
                     batch=batch_sub, order_num=order_num)
                 #logger.info(sql_consuming_date)
@@ -337,8 +347,11 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
 
 
                 #放行时间 321的posting_date
-                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
-                    batch=batch_sub, order_num=order_num)
+                #sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
+                #    batch=batch_sub, order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=321的数据，对应的posting_date为放行时间
+                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (321) group by order_num;".format(
+                    batch=batch_sub)
                 #logger.info(sql_pasting_date)
                 db.query(sql_pasting_date)
                 pasting_date_info = db.fetchAllRows()
@@ -350,7 +363,8 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
 
             db.close()
             #整合信息
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(float(detail[5])), unit=unit, pid=int(detail[7]),
+            quantity_wi = str(abs(Decimal(detail[5]).quantize(Decimal('0.000'))))
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=unit, pid=int(detail[7]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
@@ -379,7 +393,6 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
         #用relation_id找的，不返回pid（同一返回pid=0）,用batches找的返回pid(以区分是第一层节点还是第二层节点)(第一层返回的是成品信息)(时间相关的值和单位在另外的逻辑里)
         sql_detail = "select id,material,material_description,order_num,batch,quantity,relation_batches,pid from batch_order_relation where id in ({relation_batches});".\
             format(relation_batches=relation_batches)
-        #logger.info(sql_detail)
         db.query(sql_detail)
         detail_info = db.fetchAllRows()
         db.close()
@@ -424,13 +437,13 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
             #logger.info(relation_batches)
             #不再包含下级组件
             if relation_batches == '':
-                #生成时间 为空
+                # 生成时间 为空
                 creating_date = ''
 
-                #消耗时间261	consuming_date
+                # 消耗时间261	consuming_date
                 sql_consuming_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (261) group by order_num;".format(
                     batch=batch_sub, order_num=order_num)
-                #logger.info(sql_consuming_date)
+                # logger.info(sql_consuming_date)
                 db.query(sql_consuming_date)
                 consuming_date_info = db.fetchAllRows()
 
@@ -439,10 +452,13 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     consuming_date = ''
 
-                #物料收获时间101 gaining_date
-                sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
-                    batch=batch_sub, order_num=order_num)
-                #logger.info(sql_gaining_date)
+                # 物料收获时间101 gaining_date
+                # sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
+                #    batch=batch_sub, order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=101的数据，对应的posting_date为物料收获时间
+                sql_gaining_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (101) group by order_num;".format(
+                    batch=batch_sub)
+                # logger.info(sql_gaining_date)
                 db.query(sql_gaining_date)
                 gaining_date_info = db.fetchAllRows()
 
@@ -451,25 +467,31 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     gaining_date = ''
 
-
-                #放行时间 321的posting_date
-                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
-                    batch=batch_sub,order_num=order_num)
-                #logger.info(sql_pasting_date)
+                # 放行时间 321的posting_date
+                # sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
+                #    batch=batch_sub,order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=321的数据，对应的posting_date为放行时间
+                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (321) group by order_num;".format(
+                    batch=batch_sub)
+                # logger.info(sql_pasting_date)
                 db.query(sql_pasting_date)
                 pasting_date_info = db.fetchAllRows()
-
+                # logger.info(pasting_date_info)
                 if pasting_date_info != ():
                     pasting_date = pasting_date_info[0][1]
                 else:
                     pasting_date = ''
+                # logger.info(pasting_date)
 
             #包含下级组件
             else:
-                #生成时间 101的posting_date
-                sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
-                    batch=batch_sub,order_num=order_num)
-                #logger.info(sql_creating_date)
+                # 生成时间 101的posting_date
+                # sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(
+                #    batch=batch_sub,order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=101的数据，对应的posting_date为生成时间
+                sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (101) group by order_num;".format(
+                    batch=batch_sub)
+                # logger.info(sql_creating_date)
                 db.query(sql_creating_date)
                 creating_date_info = db.fetchAllRows()
 
@@ -478,10 +500,10 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     creating_date = ''
 
-                #消耗时间为空	consuming_date
+                # 消耗时间	consuming_date
                 sql_consuming_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (261) group by order_num;".format(
                     batch=batch_sub, order_num=order_num)
-                #logger.info(sql_consuming_date)
+                # logger.info(sql_consuming_date)
                 db.query(sql_consuming_date)
                 consuming_date_info = db.fetchAllRows()
 
@@ -490,14 +512,16 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
                 else:
                     consuming_date = ''
 
-                #物料收获时间为空 gaining_date
+                # 物料收获时间为空 gaining_date
                 gaining_date = ''
 
-
-                #放行时间 321的posting_date
-                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
-                    batch=batch_sub, order_num=order_num)
-                #logger.info(sql_pasting_date)
+                # 放行时间 321的posting_date
+                # sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (321) group by order_num;".format(
+                #    batch=batch_sub, order_num=order_num)
+                # 从全部数据里取当前batch下movement_type=321的数据，对应的posting_date为放行时间
+                sql_pasting_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and movement_type in (321) group by order_num;".format(
+                    batch=batch_sub)
+                # logger.info(sql_pasting_date)
                 db.query(sql_pasting_date)
                 pasting_date_info = db.fetchAllRows()
 
@@ -509,7 +533,8 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
             db.close()
 
             #整合信息
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=abs(float(detail[5])), unit=unit, pid=int(detail[7]),
+            quantity_wi = str(abs(Decimal(detail[5]).quantize(Decimal('0.000'))))
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=unit, pid=int(detail[7]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
@@ -524,9 +549,9 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
             elif relation_batches != '':
                 #logger.info(relation_batches)
                 #logger.info(batch_sub)
-                get_tree_first_level_node_info(dbconfig, batch_sub, relation_batches, box)
+                get_tree_other_level_node_info(dbconfig, batch_sub, relation_batches, box)
 
-        #logger.info(box)
+        logger.info(box)
         return box
     except Exception as e:
         print(e)
