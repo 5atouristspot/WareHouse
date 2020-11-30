@@ -75,16 +75,31 @@ def Preservative_float(base_info):
 
 # 先判断是否为空；然后取出字符串型
 def Preservative_str(base_info):
+    print(table.cell(j, base_info))
+    print(table.cell(j, base_info).value)
     if table.cell(j, base_info).value != '':
         res = table.cell(j, base_info).value
     else:
         res = ""
     return res
 
+# 先判断是否为空；然后转换er二进制类型取出字符串型
+def Preservative_bytes(base_info):
+    print(table.cell(j, base_info))
+    print(table.cell(j, base_info).value)
+    res = table.cell(j, base_info).value
+    if res != '':
+        res_str = table.cell(j, base_info).value
+        if type(table.cell(j, base_info).value) is bytes:
+            res_str = res.decode()
+    else:
+        res_str = ""
+    return res_str
+
 def Preservative_date(datestr_col):
     if table.cell(j, datestr_col).value != '':
         datestr = xlrd.xldate.xldate_as_datetime(table.cell(j, datestr_col).value, 0)
-        print (datestr)
+        #print (datestr)
         datestr = str(datestr).split(' ')[0]
         datestr = "'" + datestr + "'"
         # print datestr
@@ -107,7 +122,7 @@ def insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin, batch, 
     sql = "INSERT INTO tasly_warehouse.tasly_warehouse_storage_info (material,storage_bin, batch, material_desc, avail_stock, unit, last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status) " \
           "VALUES ('{material}','{storage_bin}','{batch}','{material_desc}',{avail_stock},'{unit}',{last_goods_rec},{date_of_manuf},{sled_bbd},{next_inspection},'{status}');".\
         format(material=material, storage_bin=storage_bin, batch=batch, material_desc=material_desc, avail_stock=avail_stock,unit=unit, last_goods_rec=last_goods_rec, date_of_manuf=date_of_manuf, sled_bbd=sled_bbd, next_inspection=next_inspection, status=status)
-    #print sql
+    #print (sql)
     db.insert(sql)
     db.close()
 
@@ -132,18 +147,16 @@ for i in range(1, files_num + 1):
         flush_tasly_warehouse_storage_info(dbconfig)
 
         for j in range(1, rows):
+            print(str(table.cell(j, 0)))
             if "number" not in str(table.cell(j, 0)):
                 continue
 
             material = Preservative_str(material_col)
-            #print material
+            print (material)
 
             storage_bin = Preservative_str(storage_bin_col)
             print (storage_bin)
-
-            batch = Preservative_str(batch_col)
-            #print batch
-
+            batch = Preservative_bytes(batch_col)
             material_desc = Preservative_str(material_desc_col)
             #print material_desc
 
