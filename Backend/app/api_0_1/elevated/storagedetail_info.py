@@ -60,6 +60,10 @@ def storagedetail():
     '''
     binum = request.args.get('binum', type=str, default=None)
     status = request.args.get('status', type=str, default=None)
+
+    if status == 'empty':
+        status = ''
+
     try:
         dbconfig = {'host': config.get('META', 'host'),
                     'port': int(config.get('META', 'port')),
