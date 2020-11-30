@@ -139,22 +139,22 @@
                   </el-table-column>
                   <el-table-column
                     prop="creating_date"
-                    label="creating_date"
+                    label="Products_date"
                     width="130">
                   </el-table-column>
                   <el-table-column
                     prop="consuming_date"
-                    label="consuming_date"
+                    label="Consuming_date"
                     width="150">
                   </el-table-column>
                   <el-table-column
                     prop="gaining_date"
-                    label="gaining_date"
+                    label="Good Receipt_date"
                     width="130">
                   </el-table-column>
                   <el-table-column
                     prop="pasting_date"
-                    label="pasting_date"
+                    label="Release_date"
                     width="130">
                   </el-table-column>
                 </el-table>
@@ -203,22 +203,22 @@
                   </el-table-column>
                   <el-table-column
                     prop="creating_date"
-                    label="creating_date"
+                    label="Products_date"
                     width="130">
                   </el-table-column>
                   <el-table-column
                     prop="consuming_date"
-                    label="consuming_date"
+                    label="Consuming_date"
                     width="150">
                   </el-table-column>
                   <el-table-column
                     prop="gaining_date"
-                    label="gaining_date"
+                    label="Good Receipt_date"
                     width="130">
                   </el-table-column>
                   <el-table-column
                     prop="pasting_date"
-                    label="pasting_date"
+                    label="Release_date"
                     width="130">
                   </el-table-column>
                 </el-table>
