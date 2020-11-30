@@ -16,7 +16,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'http://127.0.0.1:3622'
-//axios.defaults.baseURL = 'http://10.10.240.177:3622'
+//axios.defaults.baseURL = 'http://10.10.240.221:3622'
 //axios.defaults.baseURL = 'http://192.168.138.129:3621'
 axios.defaults.auth = {
       username: localStorage.token,
