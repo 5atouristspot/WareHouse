@@ -50,6 +50,11 @@
                   label="供应商">
                 </el-table-column>
                 <el-table-column
+                  prop="sante_material_requirements_mon"
+                  label="圣特物料需求月份"
+                  width="90">
+                </el-table-column>
+                <el-table-column
                   prop="sante_material_requirements"
                   label="圣特物料需求"
                   width="90">
@@ -66,10 +71,11 @@
                   prop="estimate_completion_time"
                   label="预计完成时间">
                 </el-table-column>
-                <el-table-column
-                  prop="sante_purchase_order_quantity"
-                  label="圣特采购订单数量">
+                <el-table-column class="orange-btn"
+                  prop="gap"
+                  label="gap">
                 </el-table-column>
+                <!--
                 <el-table-column
                   prop="sante_arrival_time"
                   label="圣特到货时间">
@@ -78,6 +84,7 @@
                   prop="supplier_delivery_time"
                   label="供应商发货时间">
                 </el-table-column>
+                -->
               </el-table>
             </div>
           </el-tab-pane>

@@ -55,6 +55,8 @@
           btnClazz = 'yellow-btn'
         } else if (status === '') {
           btnClazz = 'green-btn'
+        } else if (status === 'D') {
+          btnClazz = 'orange-btn'
         }
         return btnClazz
       }

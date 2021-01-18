@@ -14,6 +14,17 @@
   border-color: #409EFF;
 }
 
+.orange-btn {
+  color: #111111;
+  background-color: #ff9933;
+  border-color: #f5222d;
+}
+.orange-btn:hover, .red-btn:focus {
+  color: #333333;
+  background-color: #ff9933;
+  border-color: #ff4d4f;
+}
+
 .red-btn {
   color: #111111;
   background-color: #f5222d;

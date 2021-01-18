@@ -126,12 +126,14 @@
       },
       btnClass(status) {
         let btnClazz = 'white-btn'
-        if (status === 'Q') {
+        if (status === '待检') {
           btnClazz = 'red-btn'
-        } else if (status === 'S') {
+        } else if (status === '冻结') {
           btnClazz = 'yellow-btn'
         } else if (status === '') {
           btnClazz = 'green-btn'
+        } else if (status === '待处理') {
+          btnClazz = 'orange-btn'
         }
         return btnClazz
       },
