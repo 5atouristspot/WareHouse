@@ -19,6 +19,7 @@
             </div>
             <div class="query-result-div" style="margin: 20px;">
               <el-table
+                :cell-style="getCellStyle"
                 :data="tableData1"
                 style="width: 100%"
                 row-key="id"
@@ -71,7 +72,7 @@
                   prop="estimate_completion_time"
                   label="预计完成时间">
                 </el-table-column>
-                <el-table-column class="orange-btn"
+                <el-table-column
                   prop="gap"
                   label="gap">
                 </el-table-column>
@@ -148,6 +149,8 @@
         })
         // 临时假数据
         /*this.tableData1 = [];
+        let data = "[{\"id\":1,\"supply_type\":\"\u751f\u4ea7\u5546\",\"material\":\"10001\",\"material_description\":\"\u6c34\u98de\u84df\u5bbe\",\"unit\":\"KG\",\"supplier\":\"\u5e1d\u76ca\",\"sante_material_requirements_mon\":\"12\u6708\u4efd\",\"sante_material_requirements\":\"1200.0\",\"supplier_inventory\":\"1200.0\",\"supplier_production_quantity\":\"\",\"estimate_completion_time\":\"0\",\"gap\":0.0},{\"id\":2,\"supply_type\":\"\u751f\u4ea7\u5546\",\"material\":\"10001\",\"material_description\":\"\u6c34\u98de\u84df\u5bbe\",\"unit\":\"KG\",\"supplier\":\"\u5e1d\u76ca\",\"sante_material_requirements_mon\":\"1\u6708\u4efd\",\"sante_material_requirements\":\"1200.0\",\"supplier_inventory\":\"1200.0\",\"supplier_production_quantity\":\"\",\"estimate_completion_time\":\"0\",\"gap\":0.0},{\"id\":3,\"supply_type\":\"\u751f\u4ea7\u5546\",\"material\":\"10001\",\"material_description\":\"\u6c34\u98de\u84df\u5bbe\",\"unit\":\"KG\",\"supplier\":\"\u5e1d\u76ca\",\"sante_material_requirements_mon\":\"2\u6708\u4efd\",\"sante_material_requirements\":\"800.0\",\"supplier_inventory\":\"400.0\",\"supplier_production_quantity\":\"1600.0\",\"estimate_completion_time\":\"2021-01-04\",\"gap\":-400.0}]";
+        this.tableData1 = JSON.parse(data);
         for (let i = 0; i < 20; i++) {
           let item = {
             "id":6160 + i,
@@ -164,6 +167,12 @@
           }
           this.tableData1.push(item);
         }*/
+      },
+      getCellStyle ({row, column, rowIndex, columnIndex}) {
+        let specialCellName = 'gap'
+        if (row[specialCellName] != 0 && column.property == specialCellName) {
+          return "color: #111111; background-color: #ff99cc; border-color: #ff99cc;"
+        }
       }
     },
     components: {
