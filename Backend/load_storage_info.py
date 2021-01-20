@@ -5,6 +5,7 @@ import time
 import xlrd
 from xlrd import open_workbook
 import os
+from datetime import datetime
 
 from utils.MyFILE import project_abdir, recursiveSearchFile
 import configparser
@@ -83,6 +84,13 @@ def Preservative_str(base_info):
         res = ""
     return res
 
+def Preservative_new_date(base_info):
+    if table.cell(j, base_info).value != '':
+        res = "'"+table.cell(j, base_info).value+"'"
+    else:
+        res = "''"
+    return res
+
 # 先判断是否为空；然后转换er二进制类型取出字符串型
 def Preservative_bytes(base_info):
     print(table.cell(j, base_info))
@@ -130,7 +138,7 @@ def insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin, batch, 
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
-        address = file_address + 'test_data.xls'
+        address = file_address + 'storage.xls'
         print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)
@@ -166,21 +174,34 @@ for i in range(1, files_num + 1):
             unit = Preservative_str(unit_col)
             #print unit
 
-            last_goods_rec = Preservative_date(last_goods_rec_col)
-            #print last_goods_rec
+            last_goods_rec = Preservative_new_date(last_goods_rec_col)
+            print (last_goods_rec)
+            #last_goods_rec = datetime(last_goods_rec).strftime('yyyy/m/d')
+            #print("XXXXXXXXX")
+            #print(last_goods_rec)
 
-            date_of_manuf = Preservative_date(date_of_manuf_col)
+            date_of_manuf = Preservative_new_date(date_of_manuf_col)
             #print date_of_manuf
+            #date_of_manuf = datetime(date_of_manuf).strftime('yyyy/m/d')
 
-            sled_bbd = Preservative_date(sled_bbd_col)
+            sled_bbd = Preservative_new_date(sled_bbd_col)
             #print sled_bbd
+            #sled_bbd = datetime(sled_bbd).strftime('yyyy/m/d')
 
-            next_inspection = Preservative_date(next_inspection_col)
+            next_inspection = Preservative_new_date(next_inspection_col)
             #print next_inspection
+            #next_inspection = datetime(next_inspection).strftime('yyyy/m/d')
 
             status = Preservative_str(status_col)
             #print status
-
+            '''
+            if status == '待检':
+                status = 'Q'
+            elif status == '冻结':
+                status = 'S'
+            elif status == '待处理':
+                status = 'D'
+            '''
             insert_tasly_warehouse_storage_info(dbconfig, material, storage_bin,  batch, material_desc, avail_stock, unit,
                                                 last_goods_rec, date_of_manuf, sled_bbd, next_inspection, status)
 

@@ -31,26 +31,33 @@ unit_col = 3
 #供应商
 supplier_col = 4
 
-#圣特物料需求
-sante_material_requirements_col = 5
+#圣特物料需求月份
+sante_material_requirements_mon_col = 5
+
+#圣特物料需求数量
+#sante_material_requirements_col = 5
+sante_material_requirements_col = 6
 
 #供应商库存（已备货）
-supplier_inventory_col = 6
+#supplier_inventory_col = 6
+supplier_inventory_col = 7
 
 #供应商在产数量
-supplier_production_quantity_col = 7
+#supplier_production_quantity_col = 7
+supplier_production_quantity_col = 8
 
 #预计完成时间
-estimate_completion_time_col = 8
+#estimate_completion_time_col = 8
+estimate_completion_time_col = 9
 
 #圣特采购订单数量
-sante_purchase_order_quantity_col = 9
+#sante_purchase_order_quantity_col = 9
 
 #圣特到货时间
-sante_arrival_time_col = 10
+#sante_arrival_time_col = 10
 
 #供应商发货时间
-supplier_delivery_time_col = 11
+#supplier_delivery_time_col = 11
 
 file_address = r'/data1/mycode/WareHouse/Backend/'
 
@@ -105,13 +112,13 @@ def flush_batch_order_relation(dbconfig):
 
 
 
-def insert_batch_order_relation(dbconfig, supply_type,material,material_description,unit,supplier,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time,sante_purchase_order_quantity,sante_arrival_time,supplier_delivery_time):
+def insert_batch_order_relation(dbconfig, supply_type,material,material_description,unit,supplier,sante_material_requirements_mon,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time):
     db = MySQL(dbconfig)
 
-    sql = "INSERT INTO tasly_warehouse.supplier_stock_management (supply_type,material,material_description,unit,supplier,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time,sante_purchase_order_quantity,sante_arrival_time,supplier_delivery_time) " \
-          "VALUES ('{supply_type}','{material}','{material_description}','{unit}','{supplier}','{sante_material_requirements}','{supplier_inventory}','{supplier_production_quantity}',{estimate_completion_time},'{sante_purchase_order_quantity}',{sante_arrival_time},{supplier_delivery_time});".\
-        format(supply_type=supply_type, material=material, material_description=material_description, unit=unit, supplier=supplier, sante_material_requirements=sante_material_requirements, supplier_inventory=supplier_inventory,
-               supplier_production_quantity=supplier_production_quantity, estimate_completion_time=estimate_completion_time, sante_purchase_order_quantity=sante_purchase_order_quantity, sante_arrival_time=sante_arrival_time, supplier_delivery_time=supplier_delivery_time)
+    sql = "INSERT INTO tasly_warehouse.supplier_stock_management (supply_type,material,material_description,unit,supplier,sante_material_requirements_mon,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time) " \
+          "VALUES ('{supply_type}','{material}','{material_description}','{unit}','{supplier}','{sante_material_requirements_mon}','{sante_material_requirements}','{supplier_inventory}','{supplier_production_quantity}',{estimate_completion_time});".\
+        format(supply_type=supply_type, material=material, material_description=material_description, unit=unit, supplier=supplier, sante_material_requirements_mon=sante_material_requirements_mon,sante_material_requirements=sante_material_requirements, supplier_inventory=supplier_inventory,
+               supplier_production_quantity=supplier_production_quantity, estimate_completion_time=estimate_completion_time)
     print(sql)
     db.insert(sql)
     db.close()
@@ -120,7 +127,8 @@ def insert_batch_order_relation(dbconfig, supply_type,material,material_descript
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
-        address = file_address + 'supplier_stock_management.xls'
+        #address = file_address + 'supplier_stock_management.xls'
+        address = file_address + 'supplier.xls'
         print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)
@@ -156,6 +164,9 @@ for i in range(1, files_num + 1):
             supplier = Preservative_str(supplier_col)
             # print (supplier)
 
+            sante_material_requirements_mon = Preservative_str(sante_material_requirements_mon_col)
+            # print (sante_material_requirements_mon)
+
             sante_material_requirements = Preservative_str(sante_material_requirements_col)
             # print (sante_material_requirements)
 
@@ -168,19 +179,18 @@ for i in range(1, files_num + 1):
             estimate_completion_time = Preservative_date(estimate_completion_time_col)
             # print (estimate_completion_time)
 
-            sante_purchase_order_quantity = Preservative_str(sante_purchase_order_quantity_col)
+            #sante_purchase_order_quantity = Preservative_str(sante_purchase_order_quantity_col)
             # print (sante_purchase_order_quantity)
 
-            sante_arrival_time = Preservative_date(sante_arrival_time_col)
+            #sante_arrival_time = Preservative_date(sante_arrival_time_col)
             # print (sante_arrival_time)
 
-            supplier_delivery_time = Preservative_date(supplier_delivery_time_col)
+            #supplier_delivery_time = Preservative_date(supplier_delivery_time_col)
             # print (supplier_delivery_time)
 
-            insert_batch_order_relation(dbconfig, supply_type, material, material_description, unit, supplier,
+            insert_batch_order_relation(dbconfig, supply_type, material, material_description, unit, supplier, sante_material_requirements_mon,
                                         sante_material_requirements, supplier_inventory, supplier_production_quantity,
-                                        estimate_completion_time, sante_purchase_order_quantity, sante_arrival_time,
-                                        supplier_delivery_time)
+                                        estimate_completion_time)
 
 
     except Exception as e:

@@ -17,57 +17,66 @@ config.read(colConfig)
 files_num = 1
 
 #material 物料号
-material_col = 0
+#material_col = 0
+material_col = 5
 
 #Material Description 物料描述
-material_description_col = 1
+#material_description_col = 1
+material_description_col = 6
 
 #User Name
-user_name_col = 2
+#user_name_col = 2
 
 #Plant
-plant_col = 3
+#plant_col = 3
 
 #Storage Location
-storage_location_col = 4
+#storage_location_col = 4
 
 #Item
-item_col = 5
+#item_col = 5
 
 #Movement Type
-movement_type_col = 6
+#movement_type_col = 6
+movement_type_col = 7
 
 #Batch
-batch_col = 7
+#batch_col = 7
+batch_col = 3
 
 #Order
-order_num_col = 8
+#order_num_col = 8
+order_num_col = 14
+
 
 #Vendor
-vendor_col = 9
+#vendor_col = 9
 
 #Posting Date
-posting_date_col = 10
+#posting_date_col = 10
+posting_date_col = 0
 
 #Material Document
-material_document_col = 11
+#material_document_col = 11
 
 #Purchase Order
-purchase_order_col = 12
+#purchase_order_col = 12
 
 #Quantity
-quantity_col = 13
+#quantity_col = 13
+quantity_col = 9
 
 #Qty in Un. of Entry
-qty_u_e_col = 14
+#qty_u_e_col = 14
 
 #Amount in LC
-amount_col = 15
+#amount_col = 15
 
 #Document Date
-document_date_col = 16
+#document_date_col = 16
 
-
+#unit
+unit_col = 10
 
 
 
@@ -123,12 +132,12 @@ def flush_batch_order_relation(dbconfig):
     db.insert(sql)
     db.close()
 
-def insert_batch_order_relation(dbconfig, material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_u_e, amount, document_date):
+def insert_batch_order_relation(dbconfig, material, material_description, movement_type, batch, order_num, posting_date, quantity, unit):
     db = MySQL(dbconfig)
 
-    sql = "INSERT INTO tasly_warehouse.batch_order_relation (material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_u_e, amount, document_date) " \
-          "VALUES ('{material}','{material_description}','{user_name}','{plant}','{storage_location}','{item}','{movement_type}','{batch}','{order_num}','{vendor}',{posting_date},'{material_document}','{purchase_order}',{quantity},{qty_u_e},{amount},{document_date});".\
-        format(material=material, material_description=material_description, user_name=user_name, plant=plant, storage_location=storage_location,item=item, movement_type=movement_type, batch=batch, order_num=order_num, vendor=vendor, posting_date=posting_date, material_document=material_document, purchase_order=purchase_order, quantity=quantity, qty_u_e=qty_u_e, amount=amount, document_date=document_date)
+    sql = "INSERT INTO tasly_warehouse.batch_order_relation (material, material_description, movement_type, batch, order_num, posting_date, quantity, unit) " \
+          "VALUES ('{material}','{material_description}','{movement_type}','{batch}','{order_num}',{posting_date},{quantity},'{unit}');".\
+        format(material=material, material_description=material_description, movement_type=movement_type, batch=batch, order_num=order_num, posting_date=posting_date, quantity=quantity, unit=unit)
     print(sql)
     db.insert(sql)
     db.close()
@@ -137,7 +146,8 @@ def insert_batch_order_relation(dbconfig, material, material_description, user_n
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
-        address = file_address + 'batch_order_relation.xls'
+        #address = file_address + 'batch_order_relation.xls'
+        address = file_address + 'review.xls'
         print ('文件路径', address)
         files = xlrd.open_workbook(address)
         table = files.sheet_by_index(0)
@@ -154,8 +164,8 @@ for i in range(1, files_num + 1):
         flush_batch_order_relation(dbconfig)
 
         for j in range(1, rows):
-            #print(str(table.cell(j, 0)))
-            if "text" not in str(table.cell(j, 0)):
+            print(str(table.cell(j, 0)))
+            if "xldate" not in str(table.cell(j, 0)):
                 continue
 
             material = Preservative_str(material_col)
@@ -164,16 +174,16 @@ for i in range(1, files_num + 1):
             material_description = Preservative_str(material_description_col)
             #print (material_description)
 
-            user_name = Preservative_str(user_name_col)
+            #user_name = Preservative_str(user_name_col)
             #print user_name
 
-            plant = Preservative_str(plant_col)
+            #plant = Preservative_str(plant_col)
             #print plant
 
-            storage_location = Preservative_str(storage_location_col)
+            #storage_location = Preservative_str(storage_location_col)
             #print storage_location
 
-            item = Preservative_str(item_col)
+            #item = Preservative_str(item_col)
             #print item
 
             movement_type = Preservative_str(movement_type_col)
@@ -185,31 +195,36 @@ for i in range(1, files_num + 1):
             order_num = Preservative_str(order_num_col)
             #print (order_num)
 
-            vendor = Preservative_str(vendor_col)
+            #vendor = Preservative_str(vendor_col)
             #print vendor
 
             posting_date = Preservative_date(posting_date_col)
             #print posting_date
 
-            material_document = Preservative_str(material_document_col)
+            #material_document = Preservative_str(material_document_col)
             #print material_document
 
-            purchase_order = Preservative_str(purchase_order_col)
+            #purchase_order = Preservative_str(purchase_order_col)
             #print purchase_order
 
             quantity = Preservative_str(quantity_col)
             #print quantity
 
-            qty_un_entry = Preservative_str(qty_u_e_col)
+            unit = Preservative_str(unit_col)
+            # print unit
+
+            #qty_un_entry = Preservative_str(qty_u_e_col)
             #print qty_un_entry
 
-            amount = Preservative_str(amount_col)
+            #amount = Preservative_str(amount_col)
             #print amount
 
-            document_date = Preservative_date(document_date_col)
+            #document_date = Preservative_date(document_date_col)
             #print document_date
 
-            insert_batch_order_relation(dbconfig, material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_un_entry, amount, document_date)
+            #insert_batch_order_relation(dbconfig, material, material_description, user_name, plant, storage_location, item, movement_type, batch, order_num, vendor, posting_date, material_document, purchase_order, quantity, qty_un_entry, amount, document_date)
+
+            insert_batch_order_relation(dbconfig, material, material_description,  movement_type, batch, order_num, posting_date, quantity, unit)
 
     except Exception as e:
         print (e)
