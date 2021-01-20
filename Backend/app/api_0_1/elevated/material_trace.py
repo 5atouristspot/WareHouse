@@ -141,7 +141,7 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
 
         db = MySQL(dbconfig)
         #用relation_id找的，不返回pid（同一返回pid=0）,用batches找的返回pid(以区分是第一层节点还是第二层节点)(第一层返回的是成品信息)(时间相关的值和单位在另外的逻辑里)
-        sql_detail = "select id,material,material_description,order_num,batch,quantity,relation_batches,0 from batch_order_relation where id = {relation_id} ;".\
+        sql_detail = "select id,material,material_description,order_num,batch,quantity,unit,relation_batches,0 from batch_order_relation where id = {relation_id} ;".\
             format(relation_id=relation_id)
         #logger.info(sql_detail)
         db.query(sql_detail)
@@ -149,7 +149,8 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
 
         #如果能取到成品信息
         if detail_info != ():
-
+            '''
+            #单位现在直接取表中字段不用计算了
             #单位unit
             material = detail_info[0][1]
             material_description = detail_info[0][2]
@@ -164,6 +165,7 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
                 unit = ''
             #logger.info('unit')
             #logger.info(unit)
+            '''
 
             #生成时间 101的posting_date
             sql_creating_date = "select order_num,max(posting_date) from batch_order_relation where batch = '{batch}' and order_num = '{order_num}' and movement_type in (101) group by order_num;".format(batch=batch,order_num=order_num)
@@ -199,7 +201,7 @@ def get_finish_product_info(dbconfig, order_num, batch, relation_id):
             db.close()
             quantity_wi = str(abs(Decimal(detail_info[0][5]).quantize(Decimal('0.000'))))
             finish_product_info = dict(id=detail_info[0][0], material=detail_info[0][1], material_description=detail_info[0][2], order_num=detail_info[0][3],
-                         batch=detail_info[0][4], quantity_wi=quantity_wi, unit=unit, creating_date=creating_date,
+                         batch=detail_info[0][4], quantity_wi=quantity_wi, unit=detail_info[0][6], creating_date=creating_date,
                          consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
             logger.info('finish_product_info')
@@ -220,7 +222,7 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
         #组成物料的信息
         db = MySQL(dbconfig)
         #用relation_id找的，不返回pid（同一返回pid=0）,用batches找的返回pid(以区分是第一层节点还是第二层节点)(第一层返回的是成品信息)(时间相关的值和单位在另外的逻辑里)
-        sql_detail = "select id,material,material_description,order_num,batch,quantity,relation_batches,0 from batch_order_relation where id in ({relation_batches});".\
+        sql_detail = "select id,material,material_description,order_num,batch,quantity,unit,relation_batches,0 from batch_order_relation where id in ({relation_batches});".\
             format(relation_batches=relation_batches)
         #logger.info(sql_detail)
         db.query(sql_detail)
@@ -229,6 +231,7 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
 
         for detail in detail_info:
             db = MySQL(dbconfig)
+            '''
             #单位unit
             material = detail[1]
             material_description = detail[2]
@@ -242,6 +245,7 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
             else:
                 unit = ''
             #logger.info(unit)
+            '''
 
             #如果不再包含下级组件　则展示　　生成时间='',　消耗时间,物料收货时间,放行时间; 若包含下级组件则展示　生成时间,消耗时间,物料收货时间='', 放行时间
 
@@ -364,7 +368,7 @@ def get_tree_first_level_node_info(dbconfig, batch, relation_batches, box):
             db.close()
             #整合信息
             quantity_wi = str(abs(Decimal(detail[5]).quantize(Decimal('0.000'))))
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=unit, pid=int(detail[7]),
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=detail[6], pid=int(detail[8]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
@@ -391,7 +395,7 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
         #组成物料的信息
         db = MySQL(dbconfig)
         #用relation_id找的，不返回pid（同一返回pid=0）,用batches找的返回pid(以区分是第一层节点还是第二层节点)(第一层返回的是成品信息)(时间相关的值和单位在另外的逻辑里)
-        sql_detail = "select id,material,material_description,order_num,batch,quantity,relation_batches,pid from batch_order_relation where id in ({relation_batches});".\
+        sql_detail = "select id,material,material_description,order_num,batch,quantity,unit,relation_batches,pid from batch_order_relation where id in ({relation_batches});".\
             format(relation_batches=relation_batches)
         db.query(sql_detail)
         detail_info = db.fetchAllRows()
@@ -399,6 +403,7 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
 
         for detail in detail_info:
             db = MySQL(dbconfig)
+            '''
             #单位unit
             material = detail[1]
             material_description = detail[2]
@@ -412,6 +417,7 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
             else:
                 unit = ''
             #logger.info(unit)
+            '''
 
             #如果不再包含下级组件　则展示　　生成时间='',　消耗时间,物料收货时间,放行时间; 若包含下级组件则展示　生成时间,消耗时间,物料收货时间='', 放行时间
 
@@ -534,7 +540,7 @@ def get_tree_other_level_node_info(dbconfig, batch, relation_batches, box):
 
             #整合信息
             quantity_wi = str(abs(Decimal(detail[5]).quantize(Decimal('0.000'))))
-            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=unit, pid=int(detail[7]),
+            line_info = dict(id=detail[0], material=detail[1], material_description=detail[2], order_num=detail[3], batch=detail[4], quantity_wi=quantity_wi, unit=detail[6], pid=int(detail[8]),
                              creating_date=creating_date,
                              consuming_date=consuming_date, gaining_date=gaining_date, pasting_date=pasting_date)
 
