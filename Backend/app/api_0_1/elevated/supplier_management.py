@@ -44,7 +44,7 @@ def suppliermanagement():
         #logger.error(search_keys)
         sql = build_sql(search_type, search_keys)
     else:
-        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time,sante_purchase_order_quantity,sante_arrival_time,supplier_delivery_time from supplier_stock_management order by id;"
+        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements_mon,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time from supplier_stock_management order by id;"
 
     try:
         dbconfig = {'host': config.get('META', 'host'),
@@ -65,12 +65,20 @@ def suppliermanagement():
         for bin_number in storagebin_info:
 
 
-            sub_keys = ['id', 'supply_type', 'material', 'material_description', 'unit', 'supplier', 'sante_material_requirements', 'supplier_inventory', 'supplier_production_quantity', 'estimate_completion_time', 'sante_purchase_order_quantity', 'sante_arrival_time', 'supplier_delivery_time']
+            #sub_keys = ['id', 'supply_type', 'material', 'material_description', 'unit', 'supplier', 'sante_material_requirements', 'supplier_inventory', 'supplier_production_quantity', 'estimate_completion_time', 'sante_purchase_order_quantity', 'sante_arrival_time', 'supplier_delivery_time']
+            sub_keys = ['id', 'supply_type', 'material', 'material_description', 'unit', 'supplier',
+                        'sante_material_requirements_mon', 'sante_material_requirements', 'supplier_inventory',
+                        'supplier_production_quantity', 'estimate_completion_time', 'gap']
             #if bin_number[1] is None:
             #    sub_values = [bin_number[0], '']
             #else:
             #    sub_values = [bin_number[0], bin_number[1]]
-            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10], bin_number[11], bin_number[12]]
+            sante_material_requirements = bin_number[7]
+            supplier_inventory = bin_number[8]
+            if sante_material_requirements == '': sante_material_requirements = 0
+            if supplier_inventory == '': supplier_inventory = 0
+
+            sub_values = [bin_number[0], bin_number[1], bin_number[2], bin_number[3], bin_number[4], bin_number[5], bin_number[6], bin_number[7], bin_number[8], bin_number[9], bin_number[10], float(supplier_inventory)-float(sante_material_requirements)]
             detail_info = dict(zip(sub_keys, sub_values))
             bin_list.append(detail_info)
 
@@ -93,10 +101,10 @@ def suppliermanagement():
 def build_sql(search_type,search_keys):
 
     if len(search_keys.split(' ')) <= 1:
-        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time,sante_purchase_order_quantity,sante_arrival_time,supplier_delivery_time from supplier_stock_management where {search_type} like '%{search_key}%' order by id;".format(
+        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements_mon,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time from supplier_stock_management where {search_type} like '%{search_key}%' order by id;".format(
             search_key=search_keys, search_type=search_type)
     else:
-        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time,sante_purchase_order_quantity,sante_arrival_time,supplier_delivery_time from supplier_stock_management where {search_type} like '%{search_key}%'".format(
+        sql = "select id, supply_type,material,material_description,unit,supplier,sante_material_requirements_mon,sante_material_requirements,supplier_inventory,supplier_production_quantity,estimate_completion_time from supplier_stock_management where {search_type} like '%{search_key}%'".format(
             search_key=search_keys.split(' ')[0], search_type=search_type)
         for search_key in search_keys.split(' ')[1:]:
             sql_extra = " or {search_type} like '%{search_key}%'".format(search_key=search_key, search_type=search_type)
