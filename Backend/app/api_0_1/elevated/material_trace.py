@@ -73,6 +73,8 @@ def materialtrace():
             # 组成物料的信息
             tree_node_info = get_tree_first_level_node_info(dbconfig, batch, relation_batches, box)
             #logger.info(tree_node_info)
+            #排序tree_node_info数组，把有下级组成物料的信息　压在数组的最下面，这样组成的树形结构更清晰
+            tree_node_info.sort(key=takeCreating_date)
             #TODO:确实是这有问题　着重测这个函数
             tree_info = list_to_tree(tree_node_info)
             #logger.info(tree_info)
@@ -574,3 +576,6 @@ def list_to_tree(data):
     #print(res[0]["children"])
     #logger.error(res[0]["children"])
     return res[0]["children"]
+
+def takeCreating_date(elem):
+    return elem['creating_date']
