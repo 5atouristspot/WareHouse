@@ -1,7 +1,7 @@
 #! /data1/mycode/WareHouse/Backend/venv/bin/python
 # -*- coding: utf-8 -*-
 from utils.MyCONN import MySQL
-
+import subprocess
 import time
 import xlrd
 from xlrd import open_workbook
@@ -143,6 +143,17 @@ def insert_batch_order_relation(dbconfig, material, material_description, moveme
     db.close()
 
 
+def rename_review():
+    ret = subprocess.run("mv {dir}review.xls {dir}review_bak.xls".format(dir=file_address), shell=True, stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE, encoding="utf-8", timeout=1)
+    if ret.returncode == 0:
+        print("success:", "重命名review文件成功")
+        print("success:", ret)
+    else:
+        print("error:", ret)
+        print("error:", "重命名review文件失败")
+
+
 for i in range(1, files_num + 1):
     try:
         print ('开始处理文件', i)
@@ -161,7 +172,7 @@ for i in range(1, files_num + 1):
                     'db': config.get('META', 'db'),
                     'charset': 'utf8'}
 
-        flush_batch_order_relation(dbconfig)
+        #flush_batch_order_relation(dbconfig)
 
         for j in range(1, rows):
             print(str(table.cell(j, 0)))
@@ -226,6 +237,7 @@ for i in range(1, files_num + 1):
 
             insert_batch_order_relation(dbconfig, material, material_description,  movement_type, batch, order_num, posting_date, quantity, unit)
 
+        rename_review()
     except Exception as e:
         print (e)
         continue
