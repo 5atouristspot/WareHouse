@@ -156,7 +156,9 @@ for i in range(1, files_num + 1):
 
         for j in range(1, rows):
             print(str(table.cell(j, 0)))
-            if "number" not in str(table.cell(j, 0)):
+            #if "number" not in str(table.cell(j, 0)):
+            #    continue
+            if "NUM" in str(table.cell(j, 0)):
                 continue
 
             material = Preservative_str(material_col)
