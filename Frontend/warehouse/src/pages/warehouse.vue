@@ -6,7 +6,7 @@
         <el-col :span="(index > 0 && index == utilizationRateList.length - 1) ? 6 : 3" v-for="(item, index) in utilizationRateList" :key="index">
           <el-row v-for="(subItem, subIndex) in item.list" :key="subIndex" class="item-row">
             <el-col :span="15" class="subItem-left-col"><div>{{subIndex}}</div></el-col>
-            <el-col :span="9" class="subItem-right-col"><div :class="{'green':subIndex === specialKey}">{{item.list[subIndex]}}</div></el-col>
+            <el-col :span="9" class="subItem-right-col"><div :class="{specialClass:subIndex === specialKey}">{{item.list[subIndex]}}</div></el-col>
           </el-row>
         </el-col>
       </el-row>
@@ -58,6 +58,7 @@
         storagebinList: [],
         type: '',
         specialKey: '使用率',
+        specialClass: 'green',
         specialArray: ['02-05', '02-04', '02-03', '03-05', '03-04', '03-03', '05-05', '05-04', '05-03']
       }
     },
@@ -81,6 +82,13 @@
                 if (key === this.specialKey) {
                   let pValue = (value*100).toPrecision(12);
                   pValue = parseFloat(pValue).toFixed(2);
+                  if (pValue >= 50 && pValue < 80) {
+                    this.specialClass = 'yellow'
+                  } else if (pValue >= 80) {
+                    this.specialClass = 'red'
+                  } else {
+                    this.specialClass = 'green'
+                  }
                   value = pValue + '%';
                   list[key] = value
                 }
@@ -267,5 +275,11 @@
   }
   .green {
     background-color: #19ce50;
+  }
+  .yellow {
+    background-color: #ffff33;
+  }
+  .red {
+    background-color: #f5222d;
   }
 </style>
