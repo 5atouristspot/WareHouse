@@ -4,9 +4,9 @@
     <div class="top-div global-bg-color">
       <el-row style="width: 100%">
         <el-col :span="(index > 0 && index == utilizationRateList.length - 1) ? 6 : 3" v-for="(item, index) in utilizationRateList" :key="index">
-          <el-row v-for="(subItem, subIndex) in item.list" :key="subIndex" class="item-row">
-            <el-col :span="15" class="subItem-left-col"><div>{{subIndex}}</div></el-col>
-            <el-col :span="9" class="subItem-right-col"><div :class="specialClass">{{item.list[subIndex]}}</div></el-col>
+          <el-row v-if="subIndex !== 'class'" v-for="(subItem, subIndex) in item.list" :key="subIndex" class="item-row">
+            <el-col :span="14" class="subItem-left-col"><div>{{subIndex}}</div></el-col>
+            <el-col :span="10" class="subItem-right-col"><div :class="subIndex === specialKey ? item.list['class'] : ''">{{item.list[subIndex]}}</div></el-col>
           </el-row>
         </el-col>
       </el-row>
@@ -58,7 +58,6 @@
         storagebinList: [],
         type: '',
         specialKey: '使用率',
-        specialClass: '',
         specialArray: ['02-05', '02-04', '02-03', '03-05', '03-04', '03-03', '05-05', '05-04', '05-03']
       }
     },
@@ -79,27 +78,28 @@
               let list = item.list
               for (let key in list) {
                 let value = list[key];
+                let specialClass = ''
                 if (key === this.specialKey) {
                   let pValue = (value*100).toPrecision(12);
                   pValue = parseFloat(pValue).toFixed(2);
                   if (pValue >= 50 && pValue < 80) {
-                    this.specialClass = 'yellow'
+                    specialClass = 'yellow'
                   } else if (pValue >= 80) {
-                    this.specialClass = 'red'
+                    specialClass = 'red'
                   } else {
-                    this.specialClass = 'green'
+                    specialClass = 'green'
                   }
                   value = pValue + '%';
                   list[key] = value
-                } else {
-                  this.specialClass = ''
                 }
+                list['class'] = specialClass
                 data[index] = item
               }
             })
             this.utilizationRateList = data
           }
         })
+
         this.$axios.defaults.auth = {
           username: localStorage.token,
           password: 'unused'
