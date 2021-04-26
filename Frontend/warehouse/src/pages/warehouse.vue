@@ -6,7 +6,7 @@
         <el-col :span="(index > 0 && index == utilizationRateList.length - 1) ? 6 : 3" v-for="(item, index) in utilizationRateList" :key="index">
           <el-row v-for="(subItem, subIndex) in item.list" :key="subIndex" class="item-row">
             <el-col :span="15" class="subItem-left-col"><div>{{subIndex}}</div></el-col>
-            <el-col :span="9" class="subItem-right-col"><div :class="{specialClass:subIndex === specialKey}">{{item.list[subIndex]}}</div></el-col>
+            <el-col :span="9" class="subItem-right-col"><div :class="specialClass">{{item.list[subIndex]}}</div></el-col>
           </el-row>
         </el-col>
       </el-row>
@@ -58,7 +58,7 @@
         storagebinList: [],
         type: '',
         specialKey: '使用率',
-        specialClass: 'green',
+        specialClass: '',
         specialArray: ['02-05', '02-04', '02-03', '03-05', '03-04', '03-03', '05-05', '05-04', '05-03']
       }
     },
@@ -91,6 +91,8 @@
                   }
                   value = pValue + '%';
                   list[key] = value
+                } else {
+                  this.specialClass = ''
                 }
                 data[index] = item
               }
